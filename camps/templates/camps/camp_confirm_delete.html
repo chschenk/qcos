@@ -1,21 +1,8 @@
-{% extends 'base.html' %}
+{% extends 'confirm_delete.html' %}
+{% block camps_active %}active{% endblock %}
 {% block title %}Delete Camp{% endblock %}
-{% block body %}
-<div class="container-fluid">
-
-	<div class="row">
-
-		<div class="col-sm-12 col-md-7">
-			<div class="panel panel-default">
-				<div class="panel-body">
-					<h3>Confirm</h3>
-					<form method="post">{% csrf_token %}
-						<p>Are you sure you want to delete "{{ object }}"?</p>
-						<input class="btn btn-danger" type="submit" value="Delete"/>
-					</form>
-				</div>
-			</div>
-		</div>
-	</div>
-</div>
+{%block breadcrum%}
+	<li class="breadcrumb-item"><a href="{% url 'list-camps' %}">Camps</a></li>
+	<li class="breadcrumb-item active" aria-current="page">Delete Camp {{ object.name }}</li>
 {% endblock %}
+{% block type %}Camp{% endblock %}

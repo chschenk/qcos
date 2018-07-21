@@ -1,7 +1,13 @@
 {% extends 'base.html' %}
+{% block camps_active %}active{% endblock %}
 {% block title %}Camps{% endblock %}
 {% block body %}
-<div class="albums-container container-fluid">
+<nav aria-label="breadcrumb">
+	<ol class="breadcrumb">
+		<li class="breadcrumb-item active" aria-current="page">Camps</li>
+	</ol>
+</nav>
+<div class="container-fluid">
 
     <div class="row">
         <div class="col-sm-12">
@@ -20,28 +26,14 @@
                             <!-- Edit -->
                             <a href="{% url 'edit-camp' camp.pk %}" class="btn btn-primary btn-sm" role="button">Edit</a>
 
-                            <!-- Delete Album -->
+                            <!-- Delete camp -->
 							<a href="{% url 'delete-camp' camp.pk %}" class="btn btn-default btn-sm" role="button">
                                     <span class="fas fa-trash"></span>
 							</a>
-
-                            <!-- Favorite Album -->
-                            <a href="#" class="btn btn-default btn-sm btn-favorite" role="button">
-                                <span class="glyphicon glyphicon-star"></span>
-                            </a>
                         </div>
                 </div>
                 {% cycle '' '' '' '' '' '<div class="clearfix visible-lg"></div>' %}
             {% endfor %}
-        {% else %}
-            <div class="col-sm-12">
-                <br>
-                <a href="{% url 'add-camp' %}">
-                    <button type="button" class="btn btn-success">
-                        <span class="glyphicon glyphicon-plus"></span>&nbsp; Add an Camp
-                    </button>
-                </a>
-            </div>
         {% endif %}
     </div>
 </div>

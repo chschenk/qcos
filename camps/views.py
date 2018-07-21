@@ -1,27 +1,20 @@
 from django.shortcuts import render
 from django.views.generic import ListView, CreateView, UpdateView, DeleteView
-from django.shortcuts import HttpResponseRedirect, reverse
+from django.shortcuts import HttpResponseRedirect
+from django.urls import reverse_lazy
 from .forms import CampForm, FeeForm, CampFeeFormSet
 from .models import Camp, Fee
-# Create your views here.
+
 
 class CampListView(ListView):
 	model = Camp
 	paginate_by = 10
 
-class CampCreateView(CreateView):
-	model = Camp
-	form_class = CampForm
-	success_url =  "/camps/"
-
-class CampUpdateView(UpdateView):
-	model = Camp
-	form_class = CampFeeFormSet
-	success_url = "/camps/"
 
 class CampDeleteView(DeleteView):
 	model = Camp
-	success_url = "/camps/"
+	success_url = reverse_lazy('list-camps')
+
 
 def add_camp(request):
 	if request.method == "POST":
@@ -36,7 +29,8 @@ def add_camp(request):
 	else:
 		form = CampForm()
 		formset = CampFeeFormSet()
-	return render(request, 'camps/camp_form.html', {'form': form, 'formset': formset})
+	return render(request, 'camps/camp_form.html', {'form': form, 'formset': formset, 'mode': 'Add'})
+
 
 def edit_camp(request, pk):
 	camp = Camp.objects.get(pk=pk)
@@ -50,4 +44,4 @@ def edit_camp(request, pk):
 	else:
 		form = CampForm(instance=camp)
 		formset = CampFeeFormSet(instance=camp)
-	return render(request, 'camps/camp_form.html', {'form': form, 'formset': formset})
+	return render(request, 'camps/camp_form.html', {'form': form, 'formset': formset, 'mode': 'Edit'})
