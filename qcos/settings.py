@@ -32,6 +32,8 @@ ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
     'camps',
+    'base',
+    'registration',
     'widget_tweaks',
     'django.contrib.admin',
     'django.contrib.auth',
