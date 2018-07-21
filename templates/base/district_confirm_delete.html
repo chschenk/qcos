@@ -1,0 +1,9 @@
+{% extends 'confirm_delete.html' %}
+{% block base_active %}active{% endblock %}
+{% block title %}Delete District{% endblock %}
+{%block breadcrum%}
+	<li class="breadcrumb-item"><a href="{% url 'list-dioceses' %}">Dioceses</a></li>
+	<li class="breadcrumb-item"><a href="{% url 'view-diocese' object.diocese.pk %}">{{ object.diocese.name }}</a></li>
+	<li class="breadcrumb-item active" aria-current="page">Delete District {{ object.name }}</li>
+{% endblock %}
+{% block type %}District{% endblock %}
