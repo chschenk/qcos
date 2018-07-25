@@ -3,6 +3,7 @@ from .views import DioceseCreate, DioceseDelete, DioceseDetail, DioceseList, Dio
 from .views import DistrictCreate, DistrictDelete, DistrictDetail, DistrictUpdate
 from .views import ClanCreate, ClanDelete, ClanUpdate
 
+app_name = "base"
 urlpatterns = [
 	path('', DioceseList.as_view(), name="list-dioceses"),
 	path('diocese/', DioceseList.as_view(), name="list-dioceses"),

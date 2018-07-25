@@ -2,6 +2,7 @@ from django.urls import path
 from .views import add_registration, edit_registration, process_registration, finalize_registration
 from .views import RegistrationList, CampList, RegistrationDelete
 
+app_name = "registration"
 urlpatterns = [
 	path('', CampList.as_view(template_name="registration/registration_camp_list.html"), name="list-registrations"),
 	path('manage/<int:pk>', RegistrationList.as_view(), name="manage-registrations"),

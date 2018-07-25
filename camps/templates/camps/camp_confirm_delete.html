@@ -2,7 +2,7 @@
 {% block camps_active %}active{% endblock %}
 {% block title %}Delete Camp{% endblock %}
 {%block breadcrum%}
-	<li class="breadcrumb-item"><a href="{% url 'list-camps' %}">Camps</a></li>
+	<li class="breadcrumb-item"><a href="{% url 'camps:list-camps' %}">Camps</a></li>
 	<li class="breadcrumb-item active" aria-current="page">Delete Camp {{ object.name }}</li>
 {% endblock %}
 {% block type %}Camp{% endblock %}

@@ -4,7 +4,7 @@
 {% block body %}
 <nav aria-label="breadcrumb">
 	<ol class="breadcrumb">
-		<li class="breadcrumb-item"><a href="{% url 'list-dioceses' %}">Dioceses</a></li>
+		<li class="breadcrumb-item"><a href="{% url 'base:list-dioceses' %}">Dioceses</a></li>
 		<li class="breadcrumb-item active" aria-current="page">{{ object.name }}</li>
 	</ol>
 </nav>
@@ -14,7 +14,7 @@
         <div class="col-sm-12">
             <h3>Diocese {{ object.name }}</h3>
         </div>
-        <a href="{% url 'add-district' object.pk %}" class="btn btn-default btn-sm btn-favorite" role="button">
+        <a href="{% url 'base:add-district' object.pk %}" class="btn btn-default btn-sm btn-favorite" role="button">
 			Add District <span class="fas fa-plus"></span>
 		</a>
         {% if object.district_set.all %}
@@ -31,9 +31,9 @@
             		{% for district in object.district_set.all %}
 						<tr>
 							<th scope="row">{{ district.name }}</th>
-							<td><a href="{% url 'view-district' district.pk %}" class="btn btn-primary btn-sm" role="button">View</a></td>
-							<td><a href="{% url 'edit-district' district.pk %}" class="btn btn-primary btn-sm" role="button">Edit</a></td>
-							<td><a href="{% url 'delete-district' district.pk %}" class="btn btn-default btn-sm" role="button">
+							<td><a href="{% url 'base:view-district' district.pk %}" class="btn btn-primary btn-sm" role="button">View</a></td>
+							<td><a href="{% url 'base:edit-district' district.pk %}" class="btn btn-primary btn-sm" role="button">Edit</a></td>
+							<td><a href="{% url 'base:delete-district' district.pk %}" class="btn btn-default btn-sm" role="button">
                                     <span class="fas fa-trash"></span>
 							</a></td>
 						</tr>

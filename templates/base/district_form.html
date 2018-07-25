@@ -6,8 +6,8 @@
 {% block body %}
 <nav aria-label="breadcrumb">
 	<ol class="breadcrumb">
-		<li class="breadcrumb-item"><a href="{% url 'list-dioceses' %}">Dioceses</a></li>
-		<li class="breadcrumb-item"><a href="{% url 'view-diocese' diocese.pk %}">{{ diocese.name }}</a></li>
+		<li class="breadcrumb-item"><a href="{% url 'base:list-dioceses' %}">Dioceses</a></li>
+		<li class="breadcrumb-item"><a href="{% url 'base:view-diocese' diocese.pk %}">{{ diocese.name }}</a></li>
 		<li class="breadcrumb-item active" aria-current="page">{{ mode }} District</li>
 	</ol>
 </nav>
