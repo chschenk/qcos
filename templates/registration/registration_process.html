@@ -1,0 +1,75 @@
+{% extends 'base.html' %}
+{% load widget_tweaks %}
+{% load humanize %}
+{% block camps_active %}active{% endblock %}
+{% block title %}{{ mode }} Camp{% endblock %}
+
+{% block body %}
+<nav aria-label="breadcrumb">
+	<ol class="breadcrumb">
+		<li class="breadcrumb-item"><a href="#">Camps</a></li>
+		<li class="breadcrumb-item active" aria-current="page">{{ mode }} Camp</li>
+	</ol>
+</nav>
+<div class="container-fluid">
+
+	<div class="row">
+
+		<div class="col-sm-12 col-md-8">
+			<div class="card">
+				<div class="card-body">
+					<h3>Process Registration</h3>
+					<table class="table">
+						<tbody>
+							<tr>
+								<th scope="row">Diocese:</th>
+								<td>{{ registration.clan.district.diocese.name }}</td>
+							</tr>
+							<tr>
+								<th scope="row">District:</th>
+								<td>{{ registration.clan.district.name }}</td>
+							</tr>
+							<tr>
+								<th scope="row">Clan:</th>
+								<td>{{ registration.clan.name }}</td>
+							</tr>
+							<tr>
+								<th scope="row">Contact name</th>
+								<td>{{ registration.contact_name }}</td>
+							</tr>
+							<tr>
+								<th scope="row">Email</th>
+								<td>{{ registration.email }}</td>
+							</tr>
+							<tr>
+								<th scope="row">Telephone</th>
+								<td>{{ registration.telephone }}</td>
+							</tr>
+							<tr>
+								<th scope="row">Comment</th>
+								<td>{{ registration.telephone }}</td>
+							</tr>
+							{% for info in registration.ticketinfo_set.all %}
+								<tr>
+									<th scope="row">{{ info.fee.name }} ({{ info.fee.price|floatformat:2 }}€)</th>
+									<td>{{ info.quantity }} ({{ info.ticket_set.all|length }} generated)</td>
+								</tr>
+							{% endfor %}
+							<tr>
+								<th scope="row">Sum</th>
+								<td>{{ registration.get_quantity }}</td>
+							</tr>
+							<tr>
+								<th scope="row">Price</th>
+								<td>{{ registration.get_price|floatformat:2 }}€</td>
+							</tr>
+						</tbody>
+					</table>
+					<a href="{% url 'registration:finalize-registration' registration.pk %}" class="btn btn-success btn-sm" role="button">Generate tickets</a>
+					<td><a href="{% url 'registration:edit-registration' registration.pk %}" class="btn btn-primary btn-sm" role="button">Edit</a></td>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+{% endblock %}

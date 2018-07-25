@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+{% block registrations_active %}active{% endblock %}
+{% block title %}Registrations{% endblock %}
+{% block body %}
+<nav aria-label="breadcrumb">
+	<ol class="breadcrumb">
+		<li class="breadcrumb-item" aria-current="page"><a href="{% url 'registration:list-registrations' %}">Registrations</a></li>
+		<li class="breadcrumb-item active" aria-current="page">Camps</li>
+	</ol>
+</nav>
+<div class="container-fluid">
+
+    <div class="row">
+        <div class="col-sm-12">
+            <h3>Camps</h3>
+        </div>
+        <a href="{% url 'camps:add-camp' %}" class="btn btn-default btn-sm btn-favorite" role="button">
+			Add Camp <span class="fas fa-plus"></span>
+		</a>
+        {% if object_list %}
+		        <table class="table table-striped">
+					<thead>
+						<tr>
+							<th scope="col">Diocese</th>
+							<th scope="col">Startdate</th>
+							<th scope="col">Enddate</th>
+							<th scope="col">Manage registrations</th>
+						</tr>
+					</thead>
+					<tbody>
+            		{% for camp in object_list %}
+						<tr>
+							<th scope="row">{{ camp.name }}</th>
+							<td>{{ camp.startdate }}</td>
+							<td>{{ camp.enddate }}</td>
+							<td><a href="{% url 'registration:manage-registrations' camp.pk %}" class="btn btn-primary btn-sm" role="button">Manage registrations</a></td>
+						</tr>
+            		{% endfor %}
+				</tbody>
+			</table>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}

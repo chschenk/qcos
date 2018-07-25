@@ -26,13 +26,16 @@
 
 		<!-- Items -->
 		<div class="collapse navbar-collapse" id="navbarTogglerDemo01">
-			<a class="navbar-brand" href="{% url 'list-camps' %}">QCOS</a>
+			<a class="navbar-brand" href="{% url 'camps:list-camps' %}">QCOS</a>
 			<ul class="navbar-nav mr-auto mt-2 mt-lg-0">
 				<li class="nav-item {% block camps_active %}{% endblock %}">
-					<a class="nav-link" href="{% url 'list-camps' %}">Camps</a>
+					<a class="nav-link" href="{% url 'camps:list-camps' %}">Camps</a>
 				</li>
 				<li class="nav-item {% block base_active %}{% endblock %}">
 					<a class="nav-link" href="{% url 'list-dioceses' %}">Base</a>
+				</li>
+				<li class="nav-item {% block registrations_active %}{% endblock %}">
+					<a class="nav-link" href="{% url 'registration:list-registrations' %}">Registrations</a>
 				</li>
 			</ul>
 		</div>

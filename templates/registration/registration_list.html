@@ -1,0 +1,101 @@
+{% extends 'base.html' %}
+{% load humanize %}
+{% block registrations_active %}active{% endblock %}
+{% block title %}Registrations{% endblock %}
+{% block body %}
+<nav aria-label="breadcrumb">
+	<ol class="breadcrumb">
+		<li class="breadcrumb-item" aria-current="page"><a href="{% url 'registration:list-registrations' %}">Registrations</a></li>
+		<li class="breadcrumb-item active" aria-current="page">Camps</li>
+	</ol>
+</nav>
+<div class="container-fluid">
+
+    <div class="row">
+        <div class="col-sm-12">
+            <h3>{{ camp.name }} registrations</h3>
+			<h4>{{ camp.startdate }} - {{ camp.enddate }}</h4>
+			<h5>{{ camp.description }}</h5>
+        </div>
+		<div class="row">
+			<div class="col">
+				<!--Table for fee summary -->
+			</div>
+			<div class="col">
+				<!-- For Graphics -->
+			</div>
+		</div>
+        <a href="{% url 'registration:add-registration' camp.pk %}" class="btn btn-default btn-sm btn-favorite" role="button">
+			Add Registration <span class="fas fa-plus"></span>
+		</a>
+        {% if object_list %}
+		        <table class="table table-striped">
+					<thead>
+						<tr>
+							<th scope="col">Diocese</th>
+							<th scope="col">District</th>
+							<th scope="col">Clan</th>
+							<th scope="col">Contact</th>
+							<th scope="col">Email</th>
+							<th scope="col">Telephone</th>
+							<th scope="col">Comment</th>
+							{% for fee in camp.fee_set.all %}
+								<th scope="col">{{ fee.name }}</th>
+							{% endfor %}
+							<th scope="col">Sum</th>
+							<th scope="col">Generated Tickets</th>
+							<th scope="col">Costs</th>
+							<th scope="col">Paid</th>
+							<th scope="col">Rules accepted</th>
+							<th scope="col">Process</th>
+							<th scope="col">Edit</th>
+							<th scope="col">Delete</th>
+						</tr>
+					</thead>
+					<tbody>
+            		{% for registration in object_list %}
+						<tr>
+							<th scope="row">{{ registration.clan.district.diocese.name }}</th>
+							<td>{{ registration.clan.district.name }}</td>
+							<td>{{ registration.clan.name }}</td>
+							<td>{{ registration.contact_name }}</td>
+							<td>{{ registration.email }}</td>
+							<td>{{ registration.telephone }}</td>
+							<td>{{ registration.comment }}</td>
+							{% for quantity in registration.get_quantities %}
+								<td>{{ quantity }}</td>
+							{% endfor %}
+							<td>{{ registration.get_quantity }}</td>
+							{% if registration.get_quantity > registration.get_ticket_count %}
+								<td class="bg-danger">
+							{% elif registration.get_ticket_count > registration.get_quantity %}
+								<td class="bg-warning">
+							{% else %}
+								<td class="bg-success">
+							{% endif %}
+							{{ registration.get_ticket_count }}</td>
+							<td>{{ registration.get_price|floatformat:2 }}&euro;</td>
+							{% if registration.paid < registration.get_price %}
+								<td class="bg-danger">
+							{% elif registration.paid > registration.get_price %}
+								<td class="bg-warning">
+							{% else %}
+								<td class="bg-success">
+							{% endif %}
+							{{ registration.paid|floatformat:2 }}&euro;</td>
+							{% if registration.rules_accepted %}
+								<td class="bg-success">Yes</td>
+							{% else %}
+								<td class="bg-danger">No</td>
+							{% endif %}
+							<td><a href="{% url 'registration:process-registration' registration.pk %}" class="btn btn-success btn-sm" role="button">Process</a></td>
+							<td><a href="{% url 'registration:edit-registration' registration.pk %}" class="btn btn-primary btn-sm" role="button">Edit</a></td>
+							<td><a href="{% url 'registration:delete-registration' registration.pk %}" class="btn btn-danger btn-sm" role="button">Delete</a></td>
+						</tr>
+            		{% endfor %}
+				</tbody>
+			</table>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}
