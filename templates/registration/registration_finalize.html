@@ -7,8 +7,13 @@
 {% block body %}
 <nav aria-label="breadcrumb">
 	<ol class="breadcrumb">
-		<li class="breadcrumb-item"><a href="#">Camps</a></li>
-		<li class="breadcrumb-item active" aria-current="page">{{ mode }} Camp</li>
+		<li class="breadcrumb-item" aria-current="page"><a href="{% url 'registration:list-camps' %}">Camps</a></li>
+		<li class="breadcrumb-item" aria-current="page">
+			<a href="{% url 'registration:manage-registrations' registration.camp.pk %}">
+				{{ registration.camp.name }}
+			</a>
+		</li>
+		<li class="breadcrumb-item active" aria-current="page">Finalize registration from {{ registration.clan.name }}</li>
 	</ol>
 </nav>
 <div class="container-fluid">

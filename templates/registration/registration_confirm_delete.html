@@ -2,5 +2,12 @@
 {% block registrations_active %}active{% endblock %}
 {% block title %}Delete Registration{% endblock %}
 {%block breadcrum%}
+<li class="breadcrumb-item" aria-current="page"><a href="{% url 'registration:list-camps' %}">Camps</a></li>
+<li class="breadcrumb-item" aria-current="page">
+	<a href="{% url 'registration:manage-registrations' object.camp.pk %}">
+		{{ object.camp.name }}
+	</a>
+</li>
+<li class="breadcrumb-item active" aria-current="page">Delete registration from {{ object.clan.name }}</li>
 {% endblock %}
 {% block type %}{% endblock %}
