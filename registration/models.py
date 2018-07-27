@@ -20,6 +20,7 @@ class Registration(Model):
 	comment = fields.TextField(max_length=1000, null=True, blank=True)
 	paid = fields.DecimalField(decimal_places=2, max_digits=6, default=0)
 	rules_accepted = fields.BooleanField(default=False, validators=[validate_true])
+	present_participants = fields.PositiveIntegerField()
 
 	def get_price(self):
 		price = 0
@@ -48,6 +49,14 @@ class Registration(Model):
 		for info in self.ticketinfo_set.all():
 			tickets.extend(info.ticket_set.all())
 		return len(tickets)
+
+	def get_registrated_participant_count(self):
+		count = 0
+		for info in self.ticketinfo_set.all():
+			for ticket in info.ticket_set.all():
+				if ticket.registrated:
+					count += 1
+		return count
 
 	def __str__(self):
 		return "Registration from {}".format(self.clan.name)
