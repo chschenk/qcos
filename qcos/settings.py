@@ -33,7 +33,7 @@ ALLOWED_HOSTS = []
 INSTALLED_APPS = [
     'camps',
     'base',
-    'registration',
+    'camp_registration',
     'api',
     'widget_tweaks',
     'rest_framework',

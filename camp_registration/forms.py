@@ -1,4 +1,4 @@
-from registration.models import Registration, TicketInfo
+from camp_registration.models import Registration, TicketInfo
 from django.forms.models import ModelForm
 
 

@@ -2,6 +2,7 @@ from django.forms import widgets
 from django.forms import ModelForm, inlineformset_factory
 from .models import Camp, Fee
 
+
 class CampForm(ModelForm):
 	class Meta:
 		model = Camp
@@ -10,6 +11,7 @@ class CampForm(ModelForm):
 			'startdate': widgets.SelectDateWidget(),
 			'enddate': widgets.SelectDateWidget()
 		}
+
 
 class FeeForm(ModelForm):
 	class Meta:

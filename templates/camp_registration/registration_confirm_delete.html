@@ -1,10 +1,10 @@
 {% extends 'confirm_delete.html' %}
-{% block registrations_active %}active{% endblock %}
+{% block camp_registration_active %}active{% endblock %}
 {% block title %}Delete Registration{% endblock %}
 {%block breadcrum%}
-<li class="breadcrumb-item" aria-current="page"><a href="{% url 'registration:list-camps' %}">Camps</a></li>
+<li class="breadcrumb-item" aria-current="page"><a href="{% url 'camp_registration:list-camps' %}">Camps</a></li>
 <li class="breadcrumb-item" aria-current="page">
-	<a href="{% url 'registration:manage-registrations' object.camp.pk %}">
+	<a href="{% url 'camp_registration:manage-registrations' object.camp.pk %}">
 		{{ object.camp.name }}
 	</a>
 </li>

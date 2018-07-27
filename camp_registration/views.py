@@ -28,7 +28,7 @@ class RegistrationDelete(DeleteView):
 	model = Registration
 
 	def get_success_url(self):
-		return reverse('registration:manage-registrations', args=(self.object.camp.pk,))
+		return reverse('camp_registration:manage-registrations', args=(self.object.camp.pk,))
 
 
 def add_registration(request, **kwargs):
@@ -56,7 +56,7 @@ def add_registration(request, **kwargs):
 						continue
 					ticket_info.registration = registration
 					ticket_info.save()
-				return HttpResponseRedirect(reverse('registration:manage-registrations', args=(kwargs['pk'],)))
+				return HttpResponseRedirect(reverse('camp_registration:manage-registrations', args=(kwargs['pk'],)))
 	else:
 		form = RegistrationForm()
 		forms = list()
@@ -64,7 +64,7 @@ def add_registration(request, **kwargs):
 			instance = TicketInfo()
 			instance.fee = fee
 			forms.append(TicketInfoForm(instance=instance, prefix="TicketInfo-{}".format(fee.pk)))
-	return render(request, 'registration/registration_form.html', {'form': form, 'formset': forms, 'mode': 'Add'})
+	return render(request, 'camp_registration/registration_form.html', {'form': form, 'formset': forms, 'mode': 'Add'})
 
 
 def edit_registration(request, **kwargs):
@@ -94,7 +94,7 @@ def edit_registration(request, **kwargs):
 						continue
 					ticket_info.registration = registration
 					ticket_info.save()
-				return HttpResponseRedirect(reverse('registration:manage-registrations', args=(registration.camp.pk,)))
+				return HttpResponseRedirect(reverse('camp_registration:manage-registrations', args=(registration.camp.pk,)))
 	else:
 		form = RegistrationForm(instance=registration)
 		forms = list()
@@ -105,12 +105,12 @@ def edit_registration(request, **kwargs):
 				if info.fee == fee:
 					instance = info
 			forms.append(TicketInfoForm(instance=instance, prefix="TicketInfo-{}".format(fee.pk)))
-	return render(request, 'registration/registration_form.html', {'form': form, 'formset': forms, 'mode': 'Edit'})
+	return render(request, 'camp_registration/registration_form.html', {'form': form, 'formset': forms, 'mode': 'Edit'})
 
 
 def process_registration(request, **kwargs):
 	registration = get_object_or_404(Registration, pk=kwargs['pk'])
-	return render(request, 'registration/registration_process.html', {'registration': registration})
+	return render(request, 'camp_registration/registration_process.html', {'registration': registration})
 
 
 def finalize_registration(request, **kwargs):
@@ -120,7 +120,7 @@ def finalize_registration(request, **kwargs):
 		#print(form.errors)
 		if form.is_valid():
 			form.save()
-			return HttpResponseRedirect(reverse('registration:manage-registrations', args=(registration.camp.pk,)))
+			return HttpResponseRedirect(reverse('camp_registration:manage-registrations', args=(registration.camp.pk,)))
 	else:
 		#Generating tickets
 		for info in registration.ticketinfo_set.all():
@@ -136,4 +136,4 @@ def finalize_registration(request, **kwargs):
 				ticket.save()
 
 	form = FinalizeRegistrationForm(instance=registration)
-	return render(request, 'registration/registration_finalize.html', {'form': form, 'registration': registration})
+	return render(request, 'camp_registration/registration_finalize.html', {'form': form, 'registration': registration})

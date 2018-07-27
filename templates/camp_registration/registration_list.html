@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
 {% load humanize %}
-{% block registrations_active %}active{% endblock %}
+{% block camp_registration_active %}active{% endblock %}
 {% block title %}Registrations{% endblock %}
 {% block body %}
 <script type="text/javascript">
@@ -10,7 +10,7 @@
 </script>
 <nav aria-label="breadcrumb">
 	<ol class="breadcrumb">
-		<li class="breadcrumb-item" aria-current="page"><a href="{% url 'registration:list-camps' %}">Camps</a></li>
+		<li class="breadcrumb-item" aria-current="page"><a href="{% url 'camp_registration:list-camps' %}">Camps</a></li>
 		<li class="breadcrumb-item active" aria-current="page">{{ camp.name }}</li>
 	</ol>
 </nav>
@@ -30,7 +30,7 @@
 				<!-- For Graphics -->
 			</div>
 		</div>
-        <a href="{% url 'registration:add-registration' camp.pk %}" class="btn btn-default btn-sm btn-favorite" role="button">
+        <a href="{% url 'camp_registration:add-registration' camp.pk %}" class="btn btn-default btn-sm btn-favorite" role="button">
 			Add Registration <span class="fas fa-plus"></span>
 		</a>
         {% if object_list %}
@@ -104,9 +104,9 @@
 							{% else %}
 								<td class="bg-danger">No</td>
 							{% endif %}
-							<td><a href="{% url 'registration:process-registration' registration.pk %}" class="btn btn-success btn-sm" role="button">Process</a></td>
-							<td><a href="{% url 'registration:edit-registration' registration.pk %}" class="btn btn-primary btn-sm" role="button">Edit</a></td>
-							<td><a href="{% url 'registration:delete-registration' registration.pk %}" class="btn btn-danger btn-sm" role="button">Delete</a></td>
+							<td><a href="{% url 'camp_registration:process-registration' registration.pk %}" class="btn btn-success btn-sm" role="button">Process</a></td>
+							<td><a href="{% url 'camp_registration:edit-registration' registration.pk %}" class="btn btn-primary btn-sm" role="button">Edit</a></td>
+							<td><a href="{% url 'camp_registration:delete-registration' registration.pk %}" class="btn btn-danger btn-sm" role="button">Delete</a></td>
 						</tr>
             		{% endfor %}
 				</tbody>

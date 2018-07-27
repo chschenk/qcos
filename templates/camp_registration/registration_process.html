@@ -1,15 +1,15 @@
 {% extends 'base.html' %}
 {% load widget_tweaks %}
 {% load humanize %}
-{% block registrations_active %}active{% endblock %}
+{% block camp_registration_active %}active{% endblock %}
 {% block title %}{{ mode }} Camp{% endblock %}
 
 {% block body %}
 <nav aria-label="breadcrumb">
 	<ol class="breadcrumb">
-		<li class="breadcrumb-item" aria-current="page"><a href="{% url 'registration:list-camps' %}">Camps</a></li>
+		<li class="breadcrumb-item" aria-current="page"><a href="{% url 'camp_registration:list-camps' %}">Camps</a></li>
 		<li class="breadcrumb-item" aria-current="page">
-			<a href="{% url 'registration:manage-registrations' registration.camp.pk %}">
+			<a href="{% url 'camp_registration:manage-registrations' registration.camp.pk %}">
 				{{ registration.camp.name }}
 			</a>
 		</li>
@@ -70,8 +70,8 @@
 							</tr>
 						</tbody>
 					</table>
-					<a href="{% url 'registration:finalize-registration' registration.pk %}" class="btn btn-success btn-sm" role="button">Generate tickets</a>
-					<td><a href="{% url 'registration:edit-registration' registration.pk %}" class="btn btn-primary btn-sm" role="button">Edit</a></td>
+					<a href="{% url 'camp_registration:finalize-registration' registration.pk %}" class="btn btn-success btn-sm" role="button">Generate tickets</a>
+					<td><a href="{% url 'camp_registration:edit-registration' registration.pk %}" class="btn btn-primary btn-sm" role="button">Edit</a></td>
 				</div>
 			</div>
 		</div>

@@ -1,5 +1,5 @@
 {% extends 'base.html' %}
-{% block registrations_active %}active{% endblock %}
+{% block camp_registration_active %}active{% endblock %}
 {% block title %}Registrations{% endblock %}
 {% block body %}
 <nav aria-label="breadcrumb">
@@ -32,7 +32,7 @@
 							<th scope="row">{{ camp.name }}</th>
 							<td>{{ camp.startdate }}</td>
 							<td>{{ camp.enddate }}</td>
-							<td><a href="{% url 'registration:manage-registrations' camp.pk %}" class="btn btn-primary btn-sm" role="button">Manage registrations</a></td>
+							<td><a href="{% url 'camp_registration:manage-registrations' camp.pk %}" class="btn btn-primary btn-sm" role="button">Manage registrations</a></td>
 						</tr>
             		{% endfor %}
 				</tbody>

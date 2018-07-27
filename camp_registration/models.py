@@ -20,7 +20,7 @@ class Registration(Model):
 	comment = fields.TextField(max_length=1000, null=True, blank=True)
 	paid = fields.DecimalField(decimal_places=2, max_digits=6, default=0)
 	rules_accepted = fields.BooleanField(default=False, validators=[validate_true])
-	present_participants = fields.PositiveIntegerField()
+	present_participants = fields.PositiveIntegerField(null=True)
 
 	def get_price(self):
 		price = 0

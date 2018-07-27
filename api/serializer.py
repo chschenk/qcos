@@ -1,8 +1,7 @@
 from rest_framework import serializers
-from registration.models import Ticket, TicketInfo
 from camps.models import Camp, Fee
 from base.models import Clan
-from registration.models import Registration
+from camp_registration.models import Registration, Ticket, TicketInfo
 
 
 class TicketSerializer(serializers.ModelSerializer):

@@ -1,13 +1,13 @@
 {% extends 'base.html' %}
 {% load widget_tweaks %}
 {% load humanize %}
-{% block registrations_active %}active{% endblock %}
+{% block camp_registration_active %}active{% endblock %}
 {% block title %}{{ mode }} Camp{% endblock %}
 
 {% block body %}
 <nav aria-label="breadcrumb">
 	<ol class="breadcrumb">
-		<li class="breadcrumb-item" aria-current="page"><a href="{% url 'registration:list-camps' %}">Camps</a></li>
+		<li class="breadcrumb-item" aria-current="page"><a href="{% url 'camp_registration:list-camps' %}">Camps</a></li>
 		<li class="breadcrumb-item active" aria-current="page">{{ mode }} registration</li>
 	</ol>
 </nav>
