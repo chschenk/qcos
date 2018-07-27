@@ -44,6 +44,8 @@
 							{% endfor %}
 							<th scope="col">Sum</th>
 							<th scope="col">Generated Tickets</th>
+							<th scope="col">Present participants</th>
+							<th scope="col">Registrated tickets</th>
 							<th scope="col">Costs</th>
 							<th scope="col">Paid</th>
 							<th scope="col">Rules accepted</th>
@@ -74,6 +76,15 @@
 								<td class="bg-success">
 							{% endif %}
 							{{ registration.get_ticket_count }}</td>
+							<td>{{ registration.present_participants }}</td>
+							{% if registration.get_registrated_participant_count < registration.present_participants %}
+								<td class="bg-danger">
+							{% elif registration.get_registrated_participant_count > registration.get_ticket_count %}
+								<td class="bg-warning">
+							{% else %}
+								<td class="bg-success">
+							{% endif %}
+							{{ registration.get_registrated_participant_count }}</td>
 							<td>{{ registration.get_price|floatformat:2 }}&euro;</td>
 							{% if registration.paid < registration.get_price %}
 								<td class="bg-danger">
