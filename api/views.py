@@ -3,7 +3,8 @@ from django.views.generic.base import View
 from django.http.response import HttpResponseBadRequest, JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 from django.shortcuts import get_object_or_404
-from django.contrib.auth.mixins import LoginRequiredMixin
+from rest_framework.authentication import BasicAuthentication
+from rest_framework.permissions import IsAuthenticated
 import uuid
 from datetime import datetime
 from json import loads as json_load
@@ -13,42 +14,56 @@ from base.models import Clan
 from camp_registration.models import Registration, Ticket, TicketInfo
 
 
-class TicketsToPrint(LoginRequiredMixin, ListAPIView):
+class TicketsToPrint(ListAPIView):
+	authentication_classes = (BasicAuthentication,)
+	permission_classes = (IsAuthenticated,)
 	queryset = Ticket.objects.filter(printed=False)
 	serializer_class = TicketSerializer
 
 
-class TicketInfoRetrieveView(LoginRequiredMixin, RetrieveAPIView):
+class TicketInfoRetrieveView(RetrieveAPIView):
+	authentication_classes = (BasicAuthentication,)
+	permission_classes = (IsAuthenticated,)
 	queryset = TicketInfo.objects.all()
 	lookup_field = 'pk'
 	serializer_class = TicketInfoSerializer
 
 
-class FeeRetrieveView(LoginRequiredMixin, RetrieveAPIView):
+class FeeRetrieveView(RetrieveAPIView):
+	authentication_classes = (BasicAuthentication,)
+	permission_classes = (IsAuthenticated,)
 	queryset = Fee.objects.all()
 	lookup_field = 'pk'
 	serializer_class = FeeSerializer
 
 
-class CampRetrieveView(LoginRequiredMixin, RetrieveAPIView):
+class CampRetrieveView(RetrieveAPIView):
+	authentication_classes = (BasicAuthentication,)
+	permission_classes = (IsAuthenticated,)
 	queryset = Camp.objects.all()
 	lookup_field = 'pk'
 	serializer_class = CampSerializer
 
 
-class ClanRetrieveView(LoginRequiredMixin, RetrieveAPIView):
+class ClanRetrieveView(RetrieveAPIView):
+	authentication_classes = (BasicAuthentication,)
+	permission_classes = (IsAuthenticated,)
 	queryset = Clan.objects.all()
 	lookup_field = 'pk'
 	serializer_class = ClanSerializer
 
 
-class RegistrationRetrieveView(LoginRequiredMixin, RetrieveAPIView):
+class RegistrationRetrieveView(RetrieveAPIView):
+	authentication_classes = (BasicAuthentication,)
+	permission_classes = (IsAuthenticated,)
 	queryset = Registration.objects.all()
 	lookup_field = 'pk'
 	serializer_class = RegistrationSerializer
 
 
-class MarkTicketPrinted(LoginRequiredMixin, View):
+class MarkTicketPrinted(View):
+	authentication_classes = (BasicAuthentication,)
+	permission_classes = (IsAuthenticated,)
 
 	def post(self, request, pk):
 		return HttpResponseBadRequest(content="Bad request type")
@@ -60,7 +75,9 @@ class MarkTicketPrinted(LoginRequiredMixin, View):
 		return JsonResponse({'success': True})
 
 
-class RegisterTicket(LoginRequiredMixin, View):
+class RegisterTicket(View):
+	authentication_classes = (BasicAuthentication,)
+	permission_classes = (IsAuthenticated,)
 
 	@csrf_exempt
 	def dispatch(self, request, *args, **kwargs):

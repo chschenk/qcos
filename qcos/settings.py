@@ -131,3 +131,10 @@ STATICFILES_DIRS = [
 ]
 
 LOGIN_REDIRECT_URL = 'camp_registration:list-camps'
+
+
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework.authentication.BasicAuthentication',
+    )
+}
