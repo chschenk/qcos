@@ -1,10 +1,11 @@
 from django.urls import reverse_lazy, reverse
 from django.views.generic import CreateView, ListView, DeleteView, DetailView, UpdateView
 from django.shortcuts import get_object_or_404
+from django.contrib.auth.mixins import LoginRequiredMixin
 from .models import Diocese, District, Clan
 
 
-class DioceseCreate(CreateView):
+class DioceseCreate(LoginRequiredMixin, CreateView):
 	model = Diocese
 	fields = ['name']
 
@@ -16,11 +17,11 @@ class DioceseCreate(CreateView):
 		return super().get_context_data(**kwargs)
 
 
-class DioceseList(ListView):
+class DioceseList(LoginRequiredMixin, ListView):
 	model = Diocese
 
 
-class DioceseUpdate(UpdateView):
+class DioceseUpdate(LoginRequiredMixin, UpdateView):
 	model = Diocese
 	fields = ['name']
 	success_url = reverse_lazy('list-dioceses')
@@ -30,16 +31,16 @@ class DioceseUpdate(UpdateView):
 		return super().get_context_data(**kwargs)
 
 
-class DioceseDetail(DetailView):
+class DioceseDetail(LoginRequiredMixin, DetailView):
 	model = Diocese
 
 
-class DioceseDelete(DeleteView):
+class DioceseDelete(LoginRequiredMixin, DeleteView):
 	model = Diocese
 	success_url = reverse_lazy('list-dioceses')
 
 
-class DistrictCreate(CreateView):
+class DistrictCreate(LoginRequiredMixin, CreateView):
 	model = District
 	fields = ['name']
 	success_url = reverse_lazy('list-dioceses')
@@ -58,7 +59,7 @@ class DistrictCreate(CreateView):
 		return super(DistrictCreate, self).form_valid(form)
 
 
-class DistrictUpdate(UpdateView):
+class DistrictUpdate(LoginRequiredMixin, UpdateView):
 	model = District
 	fields = ['name']
 
@@ -72,18 +73,18 @@ class DistrictUpdate(UpdateView):
 		return super().get_context_data(**kwargs)
 
 
-class DistrictDetail(DetailView):
+class DistrictDetail(LoginRequiredMixin, DetailView):
 	model = District
 
 
-class DistrictDelete(DeleteView):
+class DistrictDelete(LoginRequiredMixin, DeleteView):
 	model = District
 
 	def get_success_url(self):
 		return reverse('view-diocese', args=(self.object.diocese.pk,))
 
 
-class ClanCreate(CreateView):
+class ClanCreate(LoginRequiredMixin, CreateView):
 	model = Clan
 	fields = ['name']
 
@@ -101,7 +102,7 @@ class ClanCreate(CreateView):
 		return super(ClanCreate, self).form_valid(form)
 
 
-class ClanUpdate(UpdateView):
+class ClanUpdate(LoginRequiredMixin, UpdateView):
 	model = Clan
 	fields = ['name']
 
@@ -115,7 +116,7 @@ class ClanUpdate(UpdateView):
 		return super().get_context_data(**kwargs)
 
 
-class ClanDelete(DeleteView):
+class ClanDelete(LoginRequiredMixin, DeleteView):
 	model = Clan
 
 	def get_success_url(self):

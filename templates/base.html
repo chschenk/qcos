@@ -41,12 +41,12 @@
 				</li>
 				{% if user.is_authenticated %}
 					<li class="nav-item">
-						Hello {{ user.firstname }} <a class="nav-link" href="{% url 'camp_registration:list-camps' %}">
+						<a class="nav-link" href="{% url 'logout' %}">
 						Logout</a>
 					</li>
 				{% else %}
 					<li class="nav-item {% block login_active %}{% endblock %}">
-						<a class="nav-link" href="{% url 'camp_registration:list-camps' %}">Login</a>
+						<a class="nav-link" href="{% url 'login' %}">Login</a>
 					</li>
 				{% endif %}
 			</ul>

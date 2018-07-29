@@ -3,6 +3,7 @@ from django.views.generic.base import View
 from django.http.response import HttpResponseBadRequest, JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 from django.shortcuts import get_object_or_404
+from django.contrib.auth.mixins import LoginRequiredMixin
 import uuid
 from datetime import datetime
 from json import loads as json_load
@@ -12,42 +13,42 @@ from base.models import Clan
 from camp_registration.models import Registration, Ticket, TicketInfo
 
 
-class TicketsToPrint(ListAPIView):
+class TicketsToPrint(LoginRequiredMixin, ListAPIView):
 	queryset = Ticket.objects.filter(printed=False)
 	serializer_class = TicketSerializer
 
 
-class TicketInfoRetrieveView(RetrieveAPIView):
+class TicketInfoRetrieveView(LoginRequiredMixin, RetrieveAPIView):
 	queryset = TicketInfo.objects.all()
 	lookup_field = 'pk'
 	serializer_class = TicketInfoSerializer
 
 
-class FeeRetrieveView(RetrieveAPIView):
+class FeeRetrieveView(LoginRequiredMixin, RetrieveAPIView):
 	queryset = Fee.objects.all()
 	lookup_field = 'pk'
 	serializer_class = FeeSerializer
 
 
-class CampRetrieveView(RetrieveAPIView):
+class CampRetrieveView(LoginRequiredMixin, RetrieveAPIView):
 	queryset = Camp.objects.all()
 	lookup_field = 'pk'
 	serializer_class = CampSerializer
 
 
-class ClanRetrieveView(RetrieveAPIView):
+class ClanRetrieveView(LoginRequiredMixin, RetrieveAPIView):
 	queryset = Clan.objects.all()
 	lookup_field = 'pk'
 	serializer_class = ClanSerializer
 
 
-class RegistrationRetrieveView(RetrieveAPIView):
+class RegistrationRetrieveView(LoginRequiredMixin, RetrieveAPIView):
 	queryset = Registration.objects.all()
 	lookup_field = 'pk'
 	serializer_class = RegistrationSerializer
 
 
-class MarkTicketPrinted(View):
+class MarkTicketPrinted(LoginRequiredMixin, View):
 
 	def post(self, request, pk):
 		return HttpResponseBadRequest(content="Bad request type")
@@ -59,7 +60,7 @@ class MarkTicketPrinted(View):
 		return JsonResponse({'success': True})
 
 
-class RegisterTicket(View):
+class RegisterTicket(LoginRequiredMixin, View):
 
 	@csrf_exempt
 	def dispatch(self, request, *args, **kwargs):
