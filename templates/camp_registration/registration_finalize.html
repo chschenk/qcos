@@ -1,19 +1,20 @@
 {% extends 'base.html' %}
+{% load i18n %}
 {% load widget_tweaks %}
 {% load humanize %}
 {% block camp_registration_active %}active{% endblock %}
-{% block title %}{{ mode }} Camp{% endblock %}
+{% block title %}{% blocktrans %}{{ mode }} Camp{% endblocktrans %}{% endblock %}
 
 {% block body %}
 <nav aria-label="breadcrumb">
 	<ol class="breadcrumb">
-		<li class="breadcrumb-item" aria-current="page"><a href="{% url 'camp_registration:list-camps' %}">Camps</a></li>
+		<li class="breadcrumb-item" aria-current="page"><a href="{% url 'camp_registration:list-camps' %}">{% trans "Camps" %}</a></li>
 		<li class="breadcrumb-item" aria-current="page">
 			<a href="{% url 'camp_registration:manage-registrations' registration.camp.pk %}">
 				{{ registration.camp.name }}
 			</a>
 		</li>
-		<li class="breadcrumb-item active" aria-current="page">Finalize registration from {{ registration.clan.name }}</li>
+		<li class="breadcrumb-item active" aria-current="page">{% blocktrans %}Finalize registration from {{ registration.clan.name }}{% endblocktrans %}</li>
 	</ol>
 </nav>
 <div class="container-fluid">
@@ -23,35 +24,35 @@
 		<div class="col-sm-12 col-md-8">
 			<div class="card">
 				<div class="card-body">
-					<h3>Registration details</h3>
+					<h3>{% trans "Registration details" %}</h3>
 					<table class="table">
 						<tbody>
 							<tr>
-								<th scope="row">Diocese:</th>
+								<th scope="row">{% trans "Diocese" %}</th>
 								<td>{{ registration.clan.district.diocese.name }}</td>
 							</tr>
 							<tr>
-								<th scope="row">District:</th>
+								<th scope="row">{% trans "District" %}</th>
 								<td>{{ registration.clan.district.name }}</td>
 							</tr>
 							<tr>
-								<th scope="row">Clan:</th>
+								<th scope="row">{% trans "Clan" %}</th>
 								<td>{{ registration.clan.name }}</td>
 							</tr>
 							<tr>
-								<th scope="row">Contact name</th>
+								<th scope="row">{% trans "Contact name" %}</th>
 								<td>{{ registration.contact_name }}</td>
 							</tr>
 							<tr>
-								<th scope="row">Email</th>
+								<th scope="row">{% trans "Email" %}</th>
 								<td>{{ registration.email }}</td>
 							</tr>
 							<tr>
-								<th scope="row">Telephone</th>
+								<th scope="row">{% trans "Telephone" %}</th>
 								<td>{{ registration.telephone }}</td>
 							</tr>
 							<tr>
-								<th scope="row">Comment</th>
+								<th scope="row">{% trans "Comment" %}</th>
 								<td>{{ registration.telephone }}</td>
 							</tr>
 							{% for info in registration.ticketinfo_set.all %}
@@ -61,11 +62,11 @@
 								</tr>
 							{% endfor %}
 							<tr>
-								<th scope="row">Sum</th>
+								<th scope="row">{% trans "Sum" %}</th>
 								<td>{{ registration.get_quantity }}</td>
 							</tr>
 							<tr>
-								<th scope="row">Price</th>
+								<th scope="row">{% trans "Price" %}</th>
 								<td>{{ registration.get_price|floatformat:2 }}€</td>
 							</tr>
 						</tbody>
@@ -74,7 +75,7 @@
 			</div>
 			<div class="card">
 				<div class="card-body">
-					<h3>Finalize Registration</h3>
+					<h3>{% trans "Finalize Registration" %}</h3>
 					<form class="form-horizontal" role="form" action="" method="post" enctype="multipart/form-data">
 						{% csrf_token %}
 						{{ form.management_form }}
@@ -93,7 +94,7 @@
 						{% for field in form.visible_fields %}
 						<div class="form-group">
 							{{ field.label_tag }}
-																{% for error in field.errors %}
+							{% for error in field.errors %}
 										<div class="invalid-feedback">
 											{{ error }}
 										</div>
@@ -116,7 +117,7 @@
 						{% endfor %}
 						<div class="form-group">
 							<div class="col-sm-offset-1 col-sm-10">
-								<button type="submit" class="btn btn-success">Finish</button>
+								<button type="submit" class="btn btn-success">{% trans "Finish" %}</button>
 							</div>
 						</div>
 					</form>

@@ -1,14 +1,15 @@
 {% extends 'base.html' %}
+{% load i18n %}
 {% load widget_tweaks %}
 {% block base_active %}active{% endblock %}
-{% block title %}{{ diocese }} - {{ mode }} District{% endblock %}
+{% block title %}{% blocktrans %}{{ diocese }} - {{ mode }} District{% endblocktrans %}{% endblock %}
 
 {% block body %}
 <nav aria-label="breadcrumb">
 	<ol class="breadcrumb">
-		<li class="breadcrumb-item"><a href="{% url 'base:list-dioceses' %}">Dioceses</a></li>
+		<li class="breadcrumb-item"><a href="{% url 'base:list-dioceses' %}">{% trans "Dioceses" %}</a></li>
 		<li class="breadcrumb-item"><a href="{% url 'base:view-diocese' diocese.pk %}">{{ diocese.name }}</a></li>
-		<li class="breadcrumb-item active" aria-current="page">{{ mode }} District</li>
+		<li class="breadcrumb-item active" aria-current="page">{% blocktrans %}{{ mode }} District{% endblocktrans %}</li>
 	</ol>
 </nav>
 <div class="container-fluid">
@@ -18,7 +19,7 @@
 		<div class="col-sm-12 col-md-8">
 			<div class="card">
 				<div class="card-body">
-					<h3>{{ mode }} District</h3>
+					<h3>{% blocktrans %}{{ mode }} District{% endblocktrans %}</h3>
 					<form class="form-horizontal" role="form" action="" method="post" enctype="multipart/form-data">
 						{% csrf_token %}
 						{{ form..management_form }}
@@ -59,7 +60,7 @@
 						{% endfor %}
 						<div class="form-group">
 							<div class="col-sm-offset-1 col-sm-10">
-								<button type="submit" class="btn btn-success">Save</button>
+								<button type="submit" class="btn btn-success">{% trans "Save" %}</button>
 							</div>
 						</div>
 					</form>

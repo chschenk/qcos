@@ -1,7 +1,8 @@
 {% extends 'base.html' %}
+{% load i18n %}
 {% load humanize %}
 {% block camp_registration_active %}active{% endblock %}
-{% block title %}Registrations{% endblock %}
+{% block title %}{% trans "Registrations" %}{% endblock %}
 {% block body %}
 <script type="text/javascript">
 	$(document).ready( function () {
@@ -10,7 +11,7 @@
 </script>
 <nav aria-label="breadcrumb">
 	<ol class="breadcrumb">
-		<li class="breadcrumb-item" aria-current="page"><a href="{% url 'camp_registration:list-camps' %}">Camps</a></li>
+		<li class="breadcrumb-item" aria-current="page"><a href="{% url 'camp_registration:list-camps' %}">{% trans "Camps" %}</a></li>
 		<li class="breadcrumb-item active" aria-current="page">{{ camp.name }}</li>
 	</ol>
 </nav>
@@ -18,7 +19,7 @@
 
     <div class="row">
         <div class="col-sm-12">
-            <h3>{{ camp.name }} registrations</h3>
+            <h3>{% blocktrans %}{{ camp.name }} registrations{% endblocktrans %}</h3>
 			<h4>{{ camp.startdate }} - {{ camp.enddate }}</h4>
 			<h5>{{ camp.description }}</h5>
         </div>
@@ -31,32 +32,32 @@
 			</div>
 		</div>
         <a href="{% url 'camp_registration:add-registration' camp.pk %}" class="btn btn-default btn-sm btn-favorite" role="button">
-			Add Registration <span class="fas fa-plus"></span>
+			{% trans "Add Registration" %}<span class="fas fa-plus"></span>
 		</a>
         {% if object_list %}
 		        <table id="registration_table" class="table table-striped">
 					<thead>
 						<tr>
-							<th scope="col">Diocese</th>
-							<th scope="col">District</th>
-							<th scope="col">Clan</th>
-							<th scope="col">Contact</th>
-							<th scope="col">Email</th>
-							<th scope="col">Telephone</th>
-							<th scope="col">Comment</th>
+							<th scope="col">{% trans "Diocese" %}</th>
+							<th scope="col">{% trans "District" %}</th>
+							<th scope="col">{% trans "Clan" %}</th>
+							<th scope="col">{% trans "Contact" %}</th>
+							<th scope="col">{% trans "Email" %}</th>
+							<th scope="col">{% trans "Telephone" %}</th>
+							<th scope="col">{% trans "Comment" %}</th>
 							{% for fee in camp.fee_set.all %}
 								<th scope="col">{{ fee.name }}</th>
 							{% endfor %}
-							<th scope="col">Sum</th>
-							<th scope="col">Generated Tickets</th>
-							<th scope="col">Present participants</th>
-							<th scope="col">Registrated tickets</th>
-							<th scope="col">Costs</th>
-							<th scope="col">Paid</th>
-							<th scope="col">Rules accepted</th>
-							<th scope="col">Process</th>
-							<th scope="col">Edit</th>
-							<th scope="col">Delete</th>
+							<th scope="col">{% trans "Sum" %}</th>
+							<th scope="col">{% trans "Generated Tickets" %}</th>
+							<th scope="col">{% trans "Present participants" %}</th>
+							<th scope="col">{% trans "Registrated tickets" %}</th>
+							<th scope="col">{% trans "Costs" %}</th>
+							<th scope="col">{% trans "Paid" %}</th>
+							<th scope="col">{% trans "Rules accepted" %}</th>
+							<th scope="col">{% trans "Process" %}</th>
+							<th scope="col">{% trans "Edit" %}</th>
+							<th scope="col">{% trans "Delete" %}</th>
 						</tr>
 					</thead>
 					<tbody>
@@ -100,13 +101,13 @@
 							{% endif %}
 							{{ registration.paid|floatformat:2 }}&euro;</td>
 							{% if registration.rules_accepted %}
-								<td class="bg-success">Yes</td>
+								<td class="bg-success">{% trans "Yes" %}</td>
 							{% else %}
-								<td class="bg-danger">No</td>
+								<td class="bg-danger">{% trans "No" %}</td>
 							{% endif %}
-							<td><a href="{% url 'camp_registration:process-registration' registration.pk %}" class="btn btn-success btn-sm" role="button">Process</a></td>
-							<td><a href="{% url 'camp_registration:edit-registration' registration.pk %}" class="btn btn-primary btn-sm" role="button">Edit</a></td>
-							<td><a href="{% url 'camp_registration:delete-registration' registration.pk %}" class="btn btn-danger btn-sm" role="button">Delete</a></td>
+							<td><a href="{% url 'camp_registration:process-registration' registration.pk %}" class="btn btn-success btn-sm" role="button">{% trans "Process" %}</a></td>
+							<td><a href="{% url 'camp_registration:edit-registration' registration.pk %}" class="btn btn-primary btn-sm" role="button">{% trans "Edit" %}</a></td>
+							<td><a href="{% url 'camp_registration:delete-registration' registration.pk %}" class="btn btn-danger btn-sm" role="button">{% trans "Delete" %}</a></td>
 						</tr>
             		{% endfor %}
 				</tbody>

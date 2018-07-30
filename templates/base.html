@@ -1,3 +1,4 @@
+{% load i18n %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -32,21 +33,21 @@
 			<ul class="navbar-nav mr-auto mt-2 mt-lg-0">
 				{% if user.is_authenticated %}
 					<li class="nav-item {% block camps_active %}{% endblock %}">
-						<a class="nav-link" href="{% url 'camps:list-camps' %}">Camps</a>
+						<a class="nav-link" href="{% url 'camps:list-camps' %}">{% trans "Camps" %}</a>
 					</li>
 					<li class="nav-item {% block base_active %}{% endblock %}">
-						<a class="nav-link" href="{% url 'base:list-dioceses' %}">Base</a>
+						<a class="nav-link" href="{% url 'base:list-dioceses' %}">{% trans "Base data" %}</a>
 					</li>
 					<li class="nav-item {% block camp_registration_active %}{% endblock %}">
-						<a class="nav-link" href="{% url 'camp_registration:list-camps' %}">Registrations</a>
+						<a class="nav-link" href="{% url 'camp_registration:list-camps' %}">{% trans "Registrations" %}</a>
 					</li>
 					<li class="nav-item">
 						<a class="nav-link" href="{% url 'logout' %}">
-						Logout</a>
+						{% trans "Logout" %}</a>
 					</li>
 				{% else %}
 					<li class="nav-item {% block login_active %}{% endblock %}">
-						<a class="nav-link" href="{% url 'login' %}">Login</a>
+						<a class="nav-link" href="{% url 'login' %}">{% trans "Login" %}</a>
 					</li>
 				{% endif %}
 			</ul>

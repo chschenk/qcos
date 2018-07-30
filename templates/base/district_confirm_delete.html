@@ -1,9 +1,10 @@
 {% extends 'confirm_delete.html' %}
+{% load i18n %}
 {% block base_active %}active{% endblock %}
-{% block title %}Delete District{% endblock %}
+{% block title %}{% trans "Delete District" %}{% endblock %}
 {%block breadcrum%}
-	<li class="breadcrumb-item"><a href="{% url 'base:list-dioceses' %}">Dioceses</a></li>
+	<li class="breadcrumb-item"><a href="{% url 'base:list-dioceses' %}">{% trans "Dioceses" %}</a></li>
 	<li class="breadcrumb-item"><a href="{% url 'base:view-diocese' object.diocese.pk %}">{{ object.diocese.name }}</a></li>
-	<li class="breadcrumb-item active" aria-current="page">Delete District {{ object.name }}</li>
+	<li class="breadcrumb-item active" aria-current="page">{% blocktrans %}Delete District {{ object.name }}{% endblocktrans %}</li>
 {% endblock %}
-{% block type %}District{% endblock %}
+{% block type %}{% trans "District" %}{% endblock %}

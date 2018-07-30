@@ -1,13 +1,14 @@
 {% extends 'confirm_delete.html' %}
+{% load i18n %}
 {% block camp_registration_active %}active{% endblock %}
-{% block title %}Delete Registration{% endblock %}
+{% block title %}{% trans "Delete Registration" %}{% endblock %}
 {%block breadcrum%}
-<li class="breadcrumb-item" aria-current="page"><a href="{% url 'camp_registration:list-camps' %}">Camps</a></li>
+<li class="breadcrumb-item" aria-current="page"><a href="{% url 'camp_registration:list-camps' %}">{% trans "Camps" %}</a></li>
 <li class="breadcrumb-item" aria-current="page">
 	<a href="{% url 'camp_registration:manage-registrations' object.camp.pk %}">
 		{{ object.camp.name }}
 	</a>
 </li>
-<li class="breadcrumb-item active" aria-current="page">Delete registration from {{ object.clan.name }}</li>
+<li class="breadcrumb-item active" aria-current="page">{% blocktrans %}Delete registration from {{ object.clan.name }}{% endblocktrans %}</li>
 {% endblock %}
 {% block type %}{% endblock %}

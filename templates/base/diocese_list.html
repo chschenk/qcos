@@ -1,37 +1,38 @@
 {% extends 'base.html' %}
+{% load i18n %}
 {% block base_active %}active{% endblock %}
-{% block title %}Dioceses{% endblock %}
+{% block title %}{% trans "Dioceses" %}{% endblock %}
 {% block body %}
 <nav aria-label="breadcrumb">
 	<ol class="breadcrumb">
-		<li class="breadcrumb-item active" aria-current="page">Dioceses</li>
+		<li class="breadcrumb-item active" aria-current="page">{% trans "Dioceses" %}</li>
 	</ol>
 </nav>
 <div class="container-fluid">
 
     <div class="row">
         <div class="col-sm-12">
-            <h3>Dioceses</h3>
+            <h3>{% trans "Dioceses" %}</h3>
         </div>
         <a href="{% url 'base:add-diocese' %}" class="btn btn-default btn-sm btn-favorite" role="button">
-			Add Diocese <span class="fas fa-plus"></span>
+			{% trans "Add Diocese" %}<span class="fas fa-plus"></span>
 		</a>
         {% if object_list %}
 		        <table class="table table-striped">
 					<thead>
 						<tr>
-							<th scope="col">Diocese</th>
-							<th scope="col">View</th>
-							<th scope="col">Edit</th>
-							<th scope="col">Delete</th>
+							<th scope="col">{% trans "Diocese" %}</th>
+							<th scope="col">{% trans "View" %}</th>
+							<th scope="col">{% trans "Edit" %}</th>
+							<th scope="col">{% trans "Delete" %}</th>
 						</tr>
 					</thead>
 					<tbody>
             		{% for diocese in object_list %}
 						<tr>
 							<th scope="row">{{ diocese.name }}</th>
-							<td><a href="{% url 'base:view-diocese' diocese.pk %}" class="btn btn-primary btn-sm" role="button">View</a></td>
-							<td><a href="{% url 'base:edit-diocese' diocese.pk %}" class="btn btn-primary btn-sm" role="button">Edit</a></td>
+							<td><a href="{% url 'base:view-diocese' diocese.pk %}" class="btn btn-primary btn-sm" role="button">{% trans "View" %}</a></td>
+							<td><a href="{% url 'base:edit-diocese' diocese.pk %}" class="btn btn-primary btn-sm" role="button">{% trans "Edit" %}</a></td>
 							<td><a href="{% url 'base:delete-diocese' diocese.pk %}" class="btn btn-default btn-sm" role="button">
                                     <span class="fas fa-trash"></span>
 							</a></td>

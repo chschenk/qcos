@@ -1,14 +1,15 @@
 {% extends 'base.html' %}
+{% load i18n %}
 {% load widget_tweaks %}
 {% load humanize %}
 {% block camp_registration_active %}active{% endblock %}
-{% block title %}{{ mode }} Camp{% endblock %}
+{% block title %}{% blocktrans %}{{ mode }} Camp{% endblocktrans %}{% endblock %}
 
 {% block body %}
 <nav aria-label="breadcrumb">
 	<ol class="breadcrumb">
-		<li class="breadcrumb-item" aria-current="page"><a href="{% url 'camp_registration:list-camps' %}">Camps</a></li>
-		<li class="breadcrumb-item active" aria-current="page">{{ mode }} registration</li>
+		<li class="breadcrumb-item" aria-current="page"><a href="{% url 'camp_registration:list-camps' %}">{% trans "Camps" %}</a></li>
+		<li class="breadcrumb-item active" aria-current="page">{% blocktrans %}{{ mode }} registration{% endblocktrans %}</li>
 	</ol>
 </nav>
 <div class="container-fluid">
@@ -18,7 +19,7 @@
 		<div class="col-sm-12 col-md-8">
 			<div class="card">
 				<div class="card-body">
-					<h3>{{ mode }} Registration</h3>
+					<h3>{% blocktrans %}{{ mode }} Registration{% blocktrans %}</h3>
 					<form class="form-horizontal" role="form" action="" method="post" enctype="multipart/form-data">
 						{% csrf_token %}
 						{{ form.management_form }}
@@ -97,7 +98,7 @@
 						{% endfor %}
 						<div class="form-group">
 							<div class="col-sm-offset-1 col-sm-10">
-								<button type="submit" class="btn btn-success">Save</button>
+								<button type="submit" class="btn btn-success">{% trans "Save" %}</button>
 							</div>
 						</div>
 					</form>

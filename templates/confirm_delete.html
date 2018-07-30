@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% load i18n %}
 {% block body %}
 <nav aria-label="breadcrumb">
 	<ol class="breadcrumb">
@@ -12,10 +13,10 @@
 		<div class="col-sm-12 col-md-7">
 			<div class="panel panel-default">
 				<div class="panel-body">
-					<h3>Confirm</h3>
+					<h3>{% trans "Confirm deletion" %}</h3>
 					<form method="post">{% csrf_token %}
-						<p>Are you sure you want to delete {%block type%}{% endblock %} "{{ object }}"?</p>
-						<input class="btn btn-danger" type="submit" value="Delete"/>
+						<p>{% blocktrans %}Are you sure you want to delete {%block type%}{% endblock %} "{{ object }}"?{% endblocktrans %}</p>
+						<input class="btn btn-danger" type="submit" value="{% trans "Delete" %}"/>
 					</form>
 				</div>
 			</div>

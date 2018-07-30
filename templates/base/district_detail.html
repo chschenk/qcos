@@ -1,10 +1,11 @@
 {% extends 'base.html' %}
+{% load i18n %}
 {% block base_active %}active{% endblock %}
-{% block title %}District {{ object.name }}{% endblock %}
+{% block title %}{% blocktrans %}District {{ object.name }}{% endblocktrans %}{% endblock %}
 {% block body %}
 <nav aria-label="breadcrumb">
 	<ol class="breadcrumb">
-		<li class="breadcrumb-item"><a href="{% url 'base:list-dioceses' %}">Dioceses</a></li>
+		<li class="breadcrumb-item"><a href="{% url 'base:list-dioceses' %}">{% trans"Dioceses" %}</a></li>
 		<li class="breadcrumb-item"><a href="{% url 'base:view-diocese' object.diocese.pk %}">{{ object.diocese.name }}</a></li>
 		<li class="breadcrumb-item active" aria-current="page">{{ object.name }}</li>
 	</ol>
@@ -13,25 +14,25 @@
 
     <div class="row">
         <div class="col-sm-12">
-			<h3>District {{ object.name }}</h3>
+			<h3>{% blocktrans %}District {{ object.name }}{% endblocktrans %}</h3>
         </div>
         <a href="{% url 'base:add-clan' object.pk %}" class="btn btn-default btn-sm btn-favorite" role="button">
-			Add Clan <span class="fas fa-plus"></span>
+			{% trans "Add Clan" %}<span class="fas fa-plus"></span>
 		</a>
         {% if object.clan_set.all %}
 		        <table class="table table-striped">
 					<thead>
 						<tr>
-							<th scope="col">Clan</th>
-							<th scope="col">Edit</th>
-							<th scope="col">Delete</th>
+							<th scope="col">{% trans "Clan" %}</th>
+							<th scope="col">{% trans "Edit" %}</th>
+							<th scope="col">{% trans "Delete" %}</th>
 						</tr>
 					</thead>
 					<tbody>
             		{% for clan in object.clan_set.all %}
 						<tr>
 							<th scope="row">{{ clan.name }}</th>
-							<td><a href="{% url 'base:edit-clan' clan.pk %}" class="btn btn-primary btn-sm" role="button">Edit</a></td>
+							<td><a href="{% url 'base:edit-clan' clan.pk %}" class="btn btn-primary btn-sm" role="button">{% trans "Edit" %}</a></td>
 							<td><a href="{% url 'base:delete-clan' clan.pk %}" class="btn btn-default btn-sm" role="button">
                                     <span class="fas fa-trash"></span>
 							</a></td>

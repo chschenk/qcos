@@ -1,20 +1,21 @@
 {% extends 'base.html' %}
+{% load i18n %}
 {% block camps_active %}active{% endblock %}
-{% block title %}Camps{% endblock %}
+{% block title %}{% trans "Camps" %}{% endblock %}
 {% block body %}
 <nav aria-label="breadcrumb">
 	<ol class="breadcrumb">
-		<li class="breadcrumb-item active" aria-current="page">Camps</li>
+		<li class="breadcrumb-item active" aria-current="page">{% trans "Camps" %}</li>
 	</ol>
 </nav>
 <div class="container-fluid">
 
     <div class="row">
         <div class="col-sm-12">
-            <h3>Camps</h3>
+            <h3>{% trans "Camps" %}</h3>
         </div>
         <a href="{% url 'camps:add-camp' %}" class="btn btn-default btn-sm btn-favorite" role="button">
-			Add Camp <span class="fas fa-plus"></span>
+			{% trans "Add Camp" %}<span class="fas fa-plus"></span>
 		</a>
         {% if object_list %}
             {% for camp in object_list %}
@@ -24,8 +25,7 @@
                             <h4>{{ camp.description }}</h4>
                             <h5>{{ camp.startdate }} - {{ camp.enddate }}</h5>
                             <!-- Edit -->
-                            <a href="{% url 'camps:edit-camp' camp.pk %}" class="btn btn-primary btn-sm" role="button">Edit</a>
-
+                            <a href="{% url 'camps:edit-camp' camp.pk %}" class="btn btn-primary btn-sm" role="button">{% trans "Edit" %}</a>
                             <!-- Delete camp -->
 							<a href="{% url 'camps:delete-camp' camp.pk %}" class="btn btn-default btn-sm" role="button">
                                     <span class="fas fa-trash"></span>
