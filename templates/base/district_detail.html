@@ -5,7 +5,7 @@
 {% block body %}
 <nav aria-label="breadcrumb">
 	<ol class="breadcrumb">
-		<li class="breadcrumb-item"><a href="{% url 'base:list-dioceses' %}">{% trans"Dioceses" %}</a></li>
+		<li class="breadcrumb-item"><a href="{% url 'base:list-dioceses' %}">{% trans "Dioceses" %}</a></li>
 		<li class="breadcrumb-item"><a href="{% url 'base:view-diocese' object.diocese.pk %}">{{ object.diocese.name }}</a></li>
 		<li class="breadcrumb-item active" aria-current="page">{{ object.name }}</li>
 	</ol>

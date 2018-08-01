@@ -10,7 +10,7 @@ class DioceseCreate(LoginRequiredMixin, CreateView):
 	fields = ['name']
 
 	def get_success_url(self):
-		return reverse('view-diocese', args=(self.object.pk,))
+		return reverse('base:view-diocese', args=(self.object.pk,))
 
 	def get_context_data(self, **kwargs):
 		kwargs['mode'] = "Add"
@@ -24,7 +24,7 @@ class DioceseList(LoginRequiredMixin, ListView):
 class DioceseUpdate(LoginRequiredMixin, UpdateView):
 	model = Diocese
 	fields = ['name']
-	success_url = reverse_lazy('list-dioceses')
+	success_url = reverse_lazy('base:list-dioceses')
 
 	def get_context_data(self, **kwargs):
 		kwargs['mode'] = "Edit"
@@ -37,16 +37,15 @@ class DioceseDetail(LoginRequiredMixin, DetailView):
 
 class DioceseDelete(LoginRequiredMixin, DeleteView):
 	model = Diocese
-	success_url = reverse_lazy('list-dioceses')
+	success_url = reverse_lazy('base:list-dioceses')
 
 
 class DistrictCreate(LoginRequiredMixin, CreateView):
 	model = District
 	fields = ['name']
-	success_url = reverse_lazy('list-dioceses')
 
 	def get_success_url(self):
-		return reverse('view-district', args=(self.object.pk,))
+		return reverse('base:view-district', args=(self.object.pk,))
 
 	def get_context_data(self, **kwargs):
 		diocese = get_object_or_404(Diocese, pk=self.kwargs['pk'])
@@ -64,7 +63,7 @@ class DistrictUpdate(LoginRequiredMixin, UpdateView):
 	fields = ['name']
 
 	def get_success_url(self):
-		return reverse('view-diocese', args=(self.object.diocese.pk,))
+		return reverse('base:view-diocese', args=(self.object.diocese.pk,))
 
 	def get_context_data(self, **kwargs):
 		diocese = self.object.diocese
@@ -81,7 +80,7 @@ class DistrictDelete(LoginRequiredMixin, DeleteView):
 	model = District
 
 	def get_success_url(self):
-		return reverse('view-diocese', args=(self.object.diocese.pk,))
+		return reverse('base:view-diocese', args=(self.object.diocese.pk,))
 
 
 class ClanCreate(LoginRequiredMixin, CreateView):
@@ -89,7 +88,7 @@ class ClanCreate(LoginRequiredMixin, CreateView):
 	fields = ['name']
 
 	def get_success_url(self):
-		return reverse('view-district', args=(self.object.district.pk,))
+		return reverse('base:view-district', args=(self.object.district.pk,))
 
 	def get_context_data(self, **kwargs):
 		district = get_object_or_404(District, pk=self.kwargs['pk'])
@@ -107,10 +106,10 @@ class ClanUpdate(LoginRequiredMixin, UpdateView):
 	fields = ['name']
 
 	def get_success_url(self):
-		return reverse('view-district', args=(self.object.district.pk,))
+		return reverse('base:view-district', args=(self.object.district.pk,))
 
 	def get_context_data(self, **kwargs):
-		district = get_object_or_404(District, pk=self.kwargs['pk'])
+		district = get_object_or_404(Clan, pk=self.kwargs['pk']).district
 		kwargs['district'] = district
 		kwargs['mode'] = "Edit"
 		return super().get_context_data(**kwargs)
@@ -120,4 +119,4 @@ class ClanDelete(LoginRequiredMixin, DeleteView):
 	model = Clan
 
 	def get_success_url(self):
-		return reverse('view-district', args=(self.object.district.pk,))
+		return reverse('base:view-district', args=(self.object.district.pk,))

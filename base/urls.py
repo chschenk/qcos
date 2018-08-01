@@ -13,11 +13,11 @@ urlpatterns = [
 	path('diocese/view/<int:pk>/', DioceseDetail.as_view(), name="view-diocese"),
 
 	path('diocese/view/<int:pk>/add/', DistrictCreate.as_view(), name="add-district"),
-	path('district/edit/<int:pk>', DistrictUpdate.as_view(), name="edit-district"),
-	path('district/delete/<int:pk>', DistrictDelete.as_view(), name="delete-district"),
-	path('district/view/<int:pk>', DistrictDetail.as_view(), name="view-district"),
+	path('district/edit/<int:pk>/', DistrictUpdate.as_view(), name="edit-district"),
+	path('district/delete/<int:pk>/', DistrictDelete.as_view(), name="delete-district"),
+	path('district/view/<int:pk>/', DistrictDetail.as_view(), name="view-district"),
 
 	path('district/view/<int:pk>/add/', ClanCreate.as_view(), name="add-clan"),
-	path('clan/edit/<int:pk>', ClanUpdate.as_view(), name="edit-clan"),
-	path('clan/delete/<int:pk>', ClanDelete.as_view(), name="delete-clan"),
+	path('clan/edit/<int:pk>/', ClanUpdate.as_view(), name="edit-clan"),
+	path('clan/delete/<int:pk>/', ClanDelete.as_view(), name="delete-clan"),
 ]

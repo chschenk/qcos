@@ -15,7 +15,7 @@
 				<div class="panel-body">
 					<h3>{% trans "Confirm deletion" %}</h3>
 					<form method="post">{% csrf_token %}
-						<p>{% blocktrans %}Are you sure you want to delete {%block type%}{% endblock %} "{{ object }}"?{% endblocktrans %}</p>
+						<p>Are you sure you want to delete {%block type%}{% endblock %} "{{ object }}"?</p>
 						<input class="btn btn-danger" type="submit" value="{% trans "Delete" %}"/>
 					</form>
 				</div>
