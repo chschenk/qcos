@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% load i18n %}
+{% block base_active %}active{% endblock %}
+{% load bootstrap4 %}
+
+{% block title %}{{ mode }} {% trans "registration for" %} {{camp}}{% endblock %}
+{% block header %}{{ mode }} {% trans "registration for" %} {{camp}}{% endblock %}
+{% block actions %}
+{% endblock %}
+{% block body %}
+	<form method="post" class="form">
+		{% csrf_token %}
+		{% bootstrap_form form %}
+		{% for feeform in formset %}
+			<div class="card">
+				<div class="card-body">
+					<h4>{{ feeform.instance.fee.name }}</h4>
+					{% bootstrap_form feeform %}
+				</div>
+			</div>
+		{% endfor %}
+		{% buttons %}
+			<button type="submit" class="btn btn-success">{% trans "Next" %}</button>
+		{% endbuttons %}
+	</form>
+{% endblock %}

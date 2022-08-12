@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% load i18n %}
+{% block base_active %}active{% endblock %}
+{% block title %}{% trans "Dioceses" %}{% endblock %}
+{% block header %}{% trans "Dioceses" %}{% endblock %}
+{% block actions %}
+	<a href="{% url 'create-diocese' %}" class="btn btn-default btn-sm btn-favorite" role="button">
+		{% trans "Add Diocese" %}<span class="fas fa-plus"></span>
+	</a>
+{% endblock %}
+{% block body %}
+{% if object_list %}
+	<table class="table table-striped">
+		<thead>
+			<tr>
+				<th scope="col">{% trans "Diocese" %}</th>
+				<th scope="col">{% trans "View" %}</th>
+				<th scope="col">{% trans "Edit" %}</th>
+				<th scope="col">{% trans "Delete" %}</th>
+			</tr>
+		</thead>
+		<tbody>
+			{% for diocese in object_list %}
+				<tr>
+					<th scope="row">{{ diocese.name }}</th>
+					<td><a href="{% url 'detail-diocese' diocese.pk %}" class="btn btn-primary btn-sm" role="button">{% trans "View" %}</a></td>
+					<td><a href="{% url 'update-diocese' diocese.pk %}" class="btn btn-primary btn-sm" role="button">{% trans "Edit" %}</a></td>
+					<td><a href="{% url 'delete-diocese' diocese.pk %}" class="btn btn-default btn-sm" role="button">
+						<span class="fas fa-trash"></span>
+						</a></td>
+				</tr>
+			{% endfor %}
+		</tbody>
+	</table>
+{% endif %}
+{% endblock %}

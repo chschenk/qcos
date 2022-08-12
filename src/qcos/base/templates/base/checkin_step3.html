@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+{% load i18n %}
+{% load bootstrap4 %}
+{% block base_active %}active{% endblock %}
+{% block title %}{% blocktrans %}Checkin for {{ clan }} for {{ camp }}{% endblocktrans %}{% endblock %}
+{% block header %}{% blocktrans %}Checkin for {{ clan }} for {{ camp }}{% endblocktrans %}{% endblock %}
+{% block actions %}
+{% endblock %}
+{% block body %}
+<h2>{% trans "Workshops" %}</h2>
+		<table class="table table-striped">
+			<thead>
+				<tr>
+					<th scope="col">{% trans "Name" %}</th>
+					<th scope="col">{% trans "Description" %}</th>
+					<th scope="col">{% trans "Status" %}</th>
+					<th scope="col">{% trans "Number" %}</th>
+					<th scope="col">{% trans "Printed" %}</th>
+				</tr>
+			</thead>
+			<tbody>
+				{% for workshop in registration.workshop_set.all %}
+					<tr>
+						<th scope="row">{{ workshop.name }}</th>
+						<td>{{ workshop.desciption }}</td>
+						<td>{{ workshop.get_status_display }}</td>
+						<td>{% if workshop.annotated_id %}{{ workshop.annotated_id }}{% else %}Noch nicht vergeben{% endif %}</td>
+						<td>{% if workshop.printed %}Ja{% else %}Nein{% endif %}</td>
+					</tr>
+				{% endfor %}
+			</tbody>
+		</table>
+    {% buttons %}
+        <a href="{% url 'list-registration' camp.pk %}"><button type="button" class="btn btn-primary">Zurück zur Übersicht</button></a>
+        <a href="{% url 'detail-registration' camp.pk registration.pk %}"><button type="button" class="btn btn-primary">Workshops bearbeiten</button></a>
+    {% endbuttons %}
+{% endblock %}

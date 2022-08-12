@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+{% load i18n %}
+{% block base_active %}active{% endblock %}
+{% block title %}{% trans "Users" %}{% endblock %}
+{% block header %}{% trans "Users" %}{% endblock %}
+{% block actions %}
+{% if perms.user.add %}
+	<a href="{% url 'create-user' %}" class="btn btn-default btn-sm btn-favorite" role="button">
+		{% trans "Add User" %}<span class="fas fa-plus"></span>
+	</a>
+{% endif %}
+{% endblock %}
+{% block body %}
+{% if object_list %}
+	<table class="table table-striped">
+		<thead>
+			<tr>
+				<th scope="col">{% trans "Username" %}</th>
+				<th scope="col">{% trans "First name" %}</th>
+				<th scope="col">{% trans "Last name" %}</th>
+				<th scope="col">{% trans "Mail" %}</th>
+				<th scope="col">{% trans "View" %}</th>
+				{% if perms.user.update %}<th scope="col">{% trans "Edit" %}</th>{% endif %}
+				{% if perms.user.delete %}<th scope="col">{% trans "Delete" %}</th>{% endif %}
+			</tr>
+		</thead>
+		<tbody>
+			{% for user in object_list %}
+				<tr>
+					<th scope="row">{{ user.username }}</th>
+					<th scope="row">{{ user.first_name }}</th>
+					<th scope="row">{{ user.last_name }}</th>
+					<th scope="row">{{ user.email }}</th>
+					<td><a href="{% url 'detail-user' user.pk %}" class="btn btn-primary btn-sm" role="button">{% trans "View" %}</a></td>
+					{% if perms.user.update %}<td><a href="{% url 'update-user' user.pk %}" class="btn btn-primary btn-sm" role="button">{% trans "Edit" %}</a></td>{% endif %}
+					{% if perms.user.delete %}<td><a href="{% url 'delete-user' user.pk %}" class="btn btn-default btn-sm" role="button">
+						<span class="fas fa-trash"></span>
+						</a></td>
+					{% endif %}
+				</tr>
+			{% endfor %}
+		</tbody>
+	</table>
+{% endif %}
+{% endblock %}

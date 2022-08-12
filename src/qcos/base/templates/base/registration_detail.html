@@ -1,0 +1,136 @@
+{% extends 'base.html' %}
+{% load i18n %}
+{% block base_active %}active{% endblock %}
+{% block title %}{% blocktrans %}Registration from {{ object.clan }} for {{ camp }}{% endblocktrans %}{% endblock %}
+{% block header %}{% blocktrans %}Registration from {{ object.clan }} for {{ camp }}{% endblocktrans %}{% endblock %}
+{% block actions %}
+		<a href="{% url 'update-registration' camp.pk object.pk %}" class="btn btn-default btn-sm btn-favorite" role="button">
+			{% trans "Edit registration" %} <span class="fas fa-edit"></span>
+		</a>
+		<a href="{% url 'create-workshop' camp.pk object.pk %}" class="btn btn-default btn-sm btn-favorite" role="button">
+			{% trans "Add workshop" %} <span class="fas fa-hammer"></span>
+		</a>
+		<a href="{% url 'checkin-registration-step1' camp.pk registration.pk %}" class="btn btn-default btn-sm btn-favorite" role="button">
+			{% trans "Check-in" %} <span class="fas fa-arrow-right"></span>
+		</a>
+{% endblock %}
+{% block body %}
+		<h2>{% trans "Registration overview" %}</h2>
+		<table class="table table-striped">
+			<tbody>
+					<tr>
+						<th scope="row">{% trans "Camp" %}</th>
+						<td>{{ object.camp.name }}</td>
+					</tr>
+					<tr>
+						<th scope="row">{% trans "Diocese" %}</th>
+						<td>{{ object.clan.district.diocese.name }}</td>
+					</tr>
+					<tr>
+						<th scope="row">{% trans "District" %}</th>
+						<td>{{ object.clan.district.name }}</td>
+					</tr>
+					<tr>
+						<th scope="row">{% trans "Clan" %}</th>
+						<td>{{ object.clan.name }}</td>
+					</tr>
+					<tr>
+						<th scope="row">{% trans "Contact name" %}</th>
+						<td>{{ object.contact_name }}</td>
+					</tr>
+					<tr>
+						<th scope="row">{% trans "E-Mail" %}</th>
+						<td>{{ object.email }}</td>
+					</tr>
+					<tr>
+						<th scope="row">{% trans "Telephone" %}</th>
+						<td>{{ object.telephone }}</td>
+					</tr>
+					<tr>
+						<th scope="row">{% trans "Comment" %}</th>
+						<td>{{ object.comment }}</td>
+					</tr>
+			</tbody>
+		</table>
+		<h2>{% trans "Ticket overview" %}</h2>
+		<table class="table table-striped">
+			<tbody>
+				{% for ticket_info in registration.ticketinfo_set.all %}
+					<tr>
+						<th scope="row">{{ ticket_info.fee.name }}</th>
+						<td>{{ ticket_info.quantity }}</td>
+						<td>x {{ ticket_info.fee.price }}€</td>
+						<td>{{ ticket_info.price }}€</td>
+					</tr>
+				{% endfor %}
+				<tr>
+					<th scope="row">{% trans "Sum" %}</th>
+					<td><b>{{ registration.participants }}</b></td>
+					<td></td>
+					<td><b>{{ registration.get_price }}€</b></td>
+				</tr>
+			</tbody>
+		</table>
+		<h2>{% trans "Check-in overview" %}</h2>
+		<table class="table table-striped">
+			<tbody>
+				<tr>
+					<th scope="col">{% trans "Present" %}</th>
+					<td>{{ registration.present_participants }}</td>
+				</tr>
+				<tr>
+					<th scope="col">{% trans "Registered" %}</th>
+					<td class="{% if registration.registered_participants == registration.present_participants%}bg-success{% else %}bg-danger{% endif %}">{{ registration.registered_participants }}</td>
+				</tr>
+				<tr>
+					<th scope="col">{% trans "Price" %}</th>
+					<td>{{ registration.get_price }}</td>
+				</tr>
+				<tr>
+					<th scope="col">{% trans "Paid" %}</th>
+					<td class="{% if registration.get_price == registration.paid%}bg-success{% else %}bg-danger{% endif %}">{{ registration.paid }}</td>
+				</tr>
+				<tr>
+					<th scope="col">{% trans "Rules accepted" %}</th>
+					{% if registration.rules_accepted %}<td class="bg-success">{% trans "Yes" %}</td>{% else %}<td class="bg-danger">{% trans "No" %}</td>{% endif %}
+				</tr>
+				<tr>
+					<th scope="col">{% trans "Picture rights" %}</th>
+					{% if registration.picture_rights %}<td class="bg-success">{% trans "Yes" %}</td>{% else %}<td class="bg-danger">{% trans "No" %}</td>{% endif %}
+				</tr>
+				<tr>
+					<th scope="col">{% trans "Staff confirmed" %}</th>
+					{% if registration.staff_confirmed %}<td class="bg-success">{% trans "Yes" %}</td>{% else %}<td class="bg-danger">{% trans "No" %}</td>{% endif %}
+				</tr>
+			</tbody>
+		</table>
+		<h2>{% trans "Workshop overview" %}</h2>
+		<table class="table table-striped">
+			<thead>
+				<tr>
+					<th scope="col">{% trans "Name" %}</th>
+					<th scope="col">{% trans "Description" %}</th>
+					<th scope="col">{% trans "Status" %}</th>
+					<th scope="col">{% trans "Number" %}</th>
+					<th scope="col">{% trans "Printed" %}</th>
+					<th scope="col">{% trans "Edit" %}</th>
+					<th scope="col">{% trans "Delete" %}</th>
+				</tr>
+			</thead>
+			<tbody>
+				{% for workshop in registration.workshop_set.all %}
+					<tr>
+						<th scope="row">{{ workshop.name }}</th>
+						<td>{{ workshop.description }}</td>
+						<td>{{ workshop.get_status_display }}</td>
+						<td>{% if workshop.annotated_id %}{{ workshop.annotated_id }}{% else %}{% trans "Not yet annotated" %}{% endif %}</td>
+						<td>{% if workshop.printed %}{% trans "Yes" %}{% else %}{% trans "No" %}{% endif %}</td>
+						<td><a href="{% url 'update-workshop' camp.pk registration.pk workshop.pk %}" class="btn btn-primary btn-sm" role="button">{% trans "Edit" %}</a></td>
+						<td><a href="{% url 'delete-workshop' camp.pk registration.pk workshop.pk %}" class="btn btn-default btn-sm" role="button">
+							<span class="fas fa-trash"></span>
+							</a></td>
+					</tr>
+				{% endfor %}
+			</tbody>
+		</table>
+{% endblock %}

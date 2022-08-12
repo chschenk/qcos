@@ -1,9 +1,0 @@
-{% extends 'confirm_delete.html' %}
-{% load i18n %}
-{% block base_active %}active{% endblock %}
-{% block title %}{% trans "Delete Diocese" %}{% endblock %}
-{%block breadcrum%}
-		<li class="breadcrumb-item"><a href="{% url 'base:list-dioceses' %}">{% trans "Dioceses" %}</a></li>
-		<li class="breadcrumb-item active" aria-current="page">{% blocktrans %}Delete Diocese {{ object.name }}{% endblocktrans%}</li>
-{% endblock %}
-{% block type %}Diocese{% endblock %}

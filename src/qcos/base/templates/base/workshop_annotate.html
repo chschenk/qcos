@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% load i18n %}
+{% load bootstrap4 %}
+{% block base_active %}active{% endblock %}
+{% block title %}{% trans "Annotate workshops for" %} {{camp}}{% endblock %}
+{% block header %}{% trans "Annotate workshops for" %} {{camp}}{% endblock %}
+{% block body %}
+<form method="post" class="form">
+    {% csrf_token %}
+    {% bootstrap_form form %}
+    {% buttons %}
+        <button type="submit" class="btn btn-primary">{% trans "Go" %}</button>
+    {% endbuttons %}
+</form>
+{% endblock %}

@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+{% load i18n %}
+{% block header %}{% trans "Confirm deletion" %}{% endblock %}
+{% block body %}
+	<form method="post">{% csrf_token %}
+		<p>Are you sure you want to delete {%block type%}{% endblock %} "{{ object }}"?</p>
+		<input class="btn btn-danger" type="submit" value="{% trans "Delete" %}"/>
+	</form>
+{% endblock %}

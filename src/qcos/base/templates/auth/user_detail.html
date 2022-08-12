@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% load i18n %}
+{% block base_active %}active{% endblock %}
+{% block title %}{% trans "User" %} {{ object.username }}{% endblock %}
+{% block header %}{% trans "User" %} {{ object.username }}{% endblock %}
+
+{% block body %}
+	<h4>{% trans "User data from" %} {{object.username}}</h4>
+	<table class="table table-striped">
+		<tbody>
+			<tr>
+				<th scope="row">{% trans "Username" %}</th>
+				<td>{{ object.username }}</td>
+			</tr>
+			<tr>
+				<th scope="row">{% trans "First name" %}</th>
+				<td>{{ object.first_name }}</td>
+			</tr>
+			<tr>
+				<th scope="row">{% trans "Last name" %}</th>
+				<td>{{ object.last_name }}</td>
+			</tr>
+			<tr>
+				<th scope="row">{% trans "E-Mail" %}</th>
+				<td>{{ object.email }}</td>
+			</tr>
+			<tr>
+				<th scope="row">{% trans "Member of this organizers" %}</th>
+				<td>{{ object.groups.all|join:", " }}</td>
+			</tr>
+		</tbody>
+	</table>
+{% endblock %}

@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% load i18n %}
+{% load bootstrap4 %}
+{% block base_active %}active{% endblock %}
+{% block title %}{% blocktrans %}{{ diocese }} - {{ mode }} District{% endblocktrans %}{% endblock %}
+{% block header %}{% blocktrans %}{{ diocese }} - {{ mode }} District{% endblocktrans %}{% endblock %}
+
+{% block body %}
+{% bootstrap_form_errors form %}
+<form method="post" class="form">
+    {% csrf_token %}
+    {% bootstrap_form form %}
+    {% buttons %}
+        <button type="submit" class="btn btn-primary">{% trans "Save" %}</button>
+    {% endbuttons %}
+</form>
+{% endblock %}

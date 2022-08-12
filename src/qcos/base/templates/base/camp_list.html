@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+{% load i18n %}
+{% block base_active %}active{% endblock %}
+{% block title %}{% trans "Camps" %}{% endblock %}
+{% block header %}{% trans "Camps" %}{% endblock %}
+{% block actions %}
+	<a href="{% url 'create-camp' %}" class="btn btn-default btn-sm btn-favorite" role="button">
+		{% trans "Add Camp" %}<span class="fas fa-plus"></span>
+	</a>
+{% endblock %}
+{% block body %}
+{% if object_list %}
+	<table class="table table-striped">
+		<thead>
+			<tr>
+				<th scope="col">{% trans "Camp" %}</th>
+				<th scope="col">{% trans "Organizer" %}</th>
+				<th scope="col">{% trans "Start date" %}</th>
+				<th scope="col">{% trans "End date" %}</th>
+				<th scope="col">{% trans "Description" %}</th>
+				<th scope="col">{% trans "View" %}</th>
+				<th scope="col">{% trans "Edit" %}</th>
+				<th scope="col">{% trans "Delete" %}</th>
+			</tr>
+		</thead>
+		<tbody>
+			{% for camp in object_list %}
+				<tr>
+					<th scope="row">{{ camp.name }}</th>
+					<td>{{ camp.organizer.name }}</td>
+					<td>{{ camp.start_date }}</td>
+					<td>{{ camp.end_date }}</td>
+					<td>{{ camp.description }}</td>
+					<td><a href="{% url 'detail-camp' camp.pk %}" class="btn btn-primary btn-sm" role="button">{% trans "View" %}</a></td>
+					<td><a href="{% url 'update-camp' camp.pk %}" class="btn btn-primary btn-sm" role="button">{% trans "Edit" %}</a></td>
+					<td><a href="{% url 'delete-camp' camp.pk %}" class="btn btn-default btn-sm" role="button">
+						<span class="fas fa-trash"></span>
+						</a></td>
+				</tr>
+			{% endfor %}
+		</tbody>
+	</table>
+{% endif %}
+{% endblock %}

@@ -1,0 +1,79 @@
+{% extends 'base.html' %}
+{% load i18n %}
+{% block base_active %}active{% endblock %}
+{% block title %}{% blocktrans %}Camp {{ object }}{% endblocktrans %}{% endblock %}
+{% block header %}{% blocktrans %}Camp {{ object }}{% endblocktrans %}{% endblock %}
+{% block actions %}
+		<a href="{% url 'create-fee' camp.pk %}" class="btn btn-default btn-sm btn-favorite" role="button">
+			{% trans "Add fee" %} <span class="fas fa-money-bill-wave"></span><span class="fas fa-plus"></span>
+		</a>
+		<a href="{% url 'create-registration' camp.pk %}" class="btn btn-default btn-sm btn-favorite" role="button">
+			{% trans "Add registration" %}<span class="fas fa-user-plus"></span>
+		</a>
+{% endblock %}
+{% block body %}
+		<table class="table table-striped">
+			<tbody>
+					<tr>
+						<th scope="row">{% trans  "Name" %}</th>
+						<td>{{ object.name }}</td>
+					</tr>
+					<tr>
+						<th scope="row">{% trans  "Organizer" %}</th>
+						<td>{{ object.organizer }}</td>
+					</tr>
+					<tr>
+						<th scope="row">{% trans  "Start date" %}</th>
+						<td>{{ object.start_date }}</td>
+					</tr>
+					<tr>
+						<th scope="row">{% trans  "End date" %}</th>
+						<td>{{ object.end_date }}</td>
+					</tr>
+					<tr>
+						<th scope="row">{% trans  "Description" %}</th>
+						<td>{{ object.description }}</td>
+					</tr>
+			</tbody>
+		</table>
+{% if camp.fee_set.all|length > 0 %}
+	<h4>{% trans "Fees" %}</h4>
+		<table class="table table-striped">
+			<thead>
+				<tr>
+					<th scope="col">{% trans "Name" %}</th>
+					<th scope="col">{% trans "Price" %}</th>
+					<th scope="col">{% trans "Start date" %}</th>
+					<th scope="col">{% trans "End date" %}</th>
+					<th scope="col">{% trans "Registrations" %}</th>
+					<th scope="col">{% trans "Edit" %}</th>
+					<th scope="col">{% trans "Delete" %}</th>
+				</tr>
+			</thead>
+			<tbody>
+				{% for fee in camp.fee_set.all %}
+					<tr>
+						<td>{{ fee.name }}</td>
+						<td>{{ fee.price }}</td>
+						<td>{{ fee.start_date }}</td>
+						<td>{{ fee.end_date }}</td>
+						<td>{{ fee.quantity }}</td>
+						<td><a href="{% url 'update-fee' fee.pk %}" class="btn btn-primary btn-sm" role="button">{% trans "Edit" %}</a></td>
+						<td><a href="{% url 'delete-fee' fee.pk %}" class="btn btn-primary btn-sm" role="button">{% trans "Delete" %}</a></td>
+					</tr>
+				{% endfor %}
+				<tr>
+					<td><b>{% trans "Sum" %}</b></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td><b>{{ camp.registration_quantity }}</b></td>
+					<td></td>
+					<td></td>
+					</tr>
+			</tbody>
+		</table>
+{% else %}
+	<h4>{% trans "There are no fees associated with this camp. You can create one" %} <a href="{% url 'create-fee' camp.pk %}">{% trans "here" %}</a></h4>
+{% endif %}
+{% endblock %}

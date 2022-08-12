@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% load i18n %}
+{% load bootstrap4 %}
+{% block base_active %}active{% endblock %}
+{% block title %}{% blocktrans %}Checkin participants for {{ clan }} for {{ camp }}{% endblocktrans %}{% endblock %}
+{% block header %}{% blocktrans %}Checkin participants for {{ clan }} for {{ camp }}{% endblocktrans %}{% endblock %}
+{% block body %}
+<h2>{% trans "Check in participants" %}</h2>
+{% bootstrap_form_errors form %}
+<form method="post" class="form">
+    {% csrf_token %}
+    {% bootstrap_form form %}
+    {% buttons %}
+        <button type="submit" class="btn btn-primary">{% trans "Check-in" %}</button>
+    {% endbuttons %}
+</form>
+{% endblock %}

@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% load i18n %}
+{% block base_active %}active{% endblock %}
+{% block title %}{% trans "Your profile" %}{% endblock %}
+{% block header %}{% trans "Your profile" %}{% endblock %}
+{% block actions %}
+	<a href="{% url 'create-user' %}" class="btn btn-default btn-sm btn-favorite" role="button">
+		{% trans "Update profile" %}<span class="fas fa-edit"></span>
+	</a>
+{% endblock %}
+{% block body %}
+	<table class="table table-striped">
+		<tbody>
+			<tr>
+				<th scope="row">{% trans "Username" %}</th>
+				<td>{{ user.username }}</td>
+			</tr>
+			<tr>
+				<th scope="row">{% trans "First name" %}</th>
+				<td>{{ user.first_name }}</td>
+			</tr>
+			<tr>
+				<th scope="row">{% trans "Last name" %}</th>
+				<td>{{ user.last_name }}</td>
+			</tr>
+			<tr>
+				<th scope="row">{% trans "E-Mail" %}</th>
+				<td>{{ user.email }}</td>
+			</tr>
+			<tr>
+				<th scope="row">{% trans "You are member of this organizers" %}</th>
+				<td>{{ user.groups.all|join:", " }}</td>
+			</tr>
+		</tbody>
+	</table>
+{% endblock %}

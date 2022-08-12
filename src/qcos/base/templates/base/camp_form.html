@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% load i18n %}
+{% block base_active %}active{% endblock %}
+{% load bootstrap4 %}
+
+{% block title %}{% trans "Camps" %}{% endblock %}
+{% block header %}{% trans "Camps" %}{% endblock %}
+{% block actions %}
+{% endblock %}
+{% block body %}
+{% bootstrap_form_errors form %}
+	<form method="post" class="form">
+		{% csrf_token %}
+		{% bootstrap_form form %}
+		{% buttons %}
+			<button type="submit" class="btn btn-primary">{% trans "Save" %}</button>
+		{% endbuttons %}
+	</form>
+{% endblock %}

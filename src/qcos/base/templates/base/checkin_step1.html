@@ -1,0 +1,68 @@
+{% extends 'base.html' %}
+{% load i18n %}
+{% load bootstrap4 %}
+{% block base_active %}active{% endblock %}
+{% block title %}{% blocktrans %}Checkin for {{ clan }} for {{ camp }}{% endblocktrans %}{% endblock %}
+{% block header %}{% blocktrans %}Checkin for {{ clan }} for {{ camp }}{% endblocktrans %}{% endblock %}
+{% block actions %}
+		<a href="{#% url 'update-registration' object.pk %#}" class="btn btn-default btn-sm btn-favorite" role="button">
+			{% trans "Edit registration" %} <span class="fas fa-edit"></span>
+		</a>
+{% endblock %}
+{% block body %}
+		<h2>{% trans "Registration overview" %}</h2>
+		<table class="table table-striped">
+			<tbody>
+					<tr>
+						<th scope="row">{% trans "Camp" %}</th>
+						<td>{{ object.camp.name }}</td>
+					</tr>
+					<tr>
+						<th scope="row">{% trans "Clan" %}</th>
+						<td>{{ object.clan.name }}</td>
+					</tr>
+					<tr>
+						<th scope="row">{% trans "Contact name" %}</th>
+						<td>{{ object.contact_name }}</td>
+					</tr>
+					<tr>
+						<th scope="row">{% trans "E-Mail" %}</th>
+						<td>{{ object.email }}</td>
+					</tr>
+					<tr>
+						<th scope="row">{% trans "Telephone" %}</th>
+						<td>{{ object.telephone }}</td>
+					</tr>
+					<tr>
+						<th scope="row">{% trans "Comment" %}</th>
+						<td>{{ object.comment }}</td>
+					</tr>
+			</tbody>
+		</table>
+		<h2>{% trans "Ticket overview" %}</h2>
+		<table class="table table-striped">
+			<tbody>
+				{% for ticket_info in registration.get_full_ticket_info %}
+					<tr>
+						<th scope="row">{{ ticket_info.name }}</th>
+						<td>{{ ticket_info.quantity }} x {{ ticket_info.price }}€</td>
+						<td>{{ ticket_info.full_price }}€</td>
+					</tr>
+				{% endfor %}
+				<tr>
+					<th scope="row">{% trans "Total" %}</th>
+					<td><b>{{ registration.participants }}</b></td>
+					<td><b>{{ registration.get_price }}€</b></td>
+				</tr>
+			</tbody>
+		</table>
+<h2>{% trans "Check in" %}</h2>
+{% bootstrap_form_errors form %}
+<form method="post" class="form">
+    {% csrf_token %}
+    {% bootstrap_form form %}
+    {% buttons %}
+        <button type="submit" class="btn btn-primary">{% trans "Next" %}</button>
+    {% endbuttons %}
+</form>
+{% endblock %}

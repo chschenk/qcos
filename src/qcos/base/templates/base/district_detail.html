@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% load i18n %}
+{% block base_active %}active{% endblock %}
+{% block title %}{% blocktrans %}District {{ object }}{% endblocktrans %}{% endblock %}
+{% block header %}{% blocktrans %}District {{ object }}{% endblocktrans %}{% endblock %}
+{% block actions %}
+	<a href="{% url 'create-clan' object.pk %}" class="btn btn-default btn-sm btn-favorite" role="button">
+		{% trans "Add Clan" %}<span class="fas fa-plus"></span>
+	</a>
+{% endblock %}
+{% block body %}
+	{% if object.clan_set.all %}
+		<table class="table table-striped">
+			<thead>
+				<tr>
+					<th scope="col">{% trans "Clan" %}</th>
+					<th scope="col">{% trans "Edit" %}</th>
+					<th scope="col">{% trans "Delete" %}</th>
+				</tr>
+			</thead>
+			<tbody>
+           		{% for clan in object.clan_set.all %}
+					<tr>
+						<th scope="row">{{ clan.name }}</th>
+						<td><a href="{% url 'update-clan' clan.pk %}" class="btn btn-primary btn-sm" role="button">{% trans "Edit" %}</a></td>
+						<td><a href="{% url 'delete-clan' clan.pk %}" class="btn btn-default btn-sm" role="button">
+							<span class="fas fa-trash"></span>
+							</a></td>
+					</tr>
+				{% endfor %}
+			</tbody>
+		</table>
+	{% else %}
+		<h2>{% trans "There are no clans in this district" %}</h2>
+	{% endif %}
+{% endblock %}

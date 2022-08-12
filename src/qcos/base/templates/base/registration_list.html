@@ -1,0 +1,64 @@
+{% extends 'base.html' %}
+{% load i18n %}
+{% block base_active %}active{% endblock %}
+{% block title %}{% trans "Registrations for" %} {{camp}}{% endblock %}
+{% block header %}{% trans "Registrations for" %} {{camp}}{% endblock %}
+{% block actions %}
+{% if perms.camp.add %}
+	<a href="{% url 'create-registration' camp.id %}" class="btn btn-default btn-sm btn-favorite" role="button">
+		{% trans "Add registration" %}<span class="fas fa-plus"></span>
+	</a>
+{% endif %}
+{% endblock %}
+{% block body %}
+{% if object_list %}
+	<table class="table table-striped">
+		<thead>
+			<tr>
+				<th scope="col">{% trans "Clan" %}</th>
+				{% for fee in camp.fee_set.all %}
+					<th scope="col">{{ fee.name }}</th>
+				{% endfor %}
+				<th scope="col">{% trans "Sum" %}</th>
+				<th scope="col">{% trans "Present" %}</th>
+				<th scope="col">{% trans "Registered" %}</th>
+				<th scope="col">{% trans "Price" %}</th>
+				<th scope="col">{% trans "Paid" %}</th>
+				<th scope="col">{% trans "Rules accepted" %}</th>
+				<th scope="col">{% trans "Picture rights" %}</th>
+				<th scope="col">{% trans "Staff confirmed" %}</th>
+				<th scope="col">{% trans "Contact" %}</th>
+				<th scope="col">{% trans "Comment" %}</th>
+				<th scope="col">{% trans "View" %}</th>
+				<th scope="col">{% trans "Edit" %}</th>
+				<th scope="col">{% trans "Delete" %}</th>
+			</tr>
+		</thead>
+		<tbody>
+			{% for registration in object_list %}
+				<tr>
+					<th scope="row">{{ registration.clan }}</th>
+					{% for ticket_info in registration.get_ticket_infos %}
+						<td>{{ ticket_info }}</td>
+					{% endfor %}
+					<td>{{ registration.participants }}</td>
+					<td>{{ registration.present_participants }}</td>
+					<td class="{% if registration.registered_participants == registration.present_participants%}bg-success{% else %}bg-danger{% endif %}">{{ registration.registered_participants }}</td>
+					<td>{{ registration.get_price }}</td>
+					<td class="{% if registration.get_price == registration.paid%}bg-success{% else %}bg-danger{% endif %}">{{ registration.paid }}</td>
+					{% if registration.rules_accepted %}<td class="bg-success">{% trans "Yes" %}</td>{% else %}<td class="bg-danger">{% trans "No" %}</td>{% endif %}
+					{% if registration.picture_rights %}<td class="bg-success">{% trans "Yes" %}</td>{% else %}<td class="bg-danger">{% trans "No" %}</td>{% endif %}
+					{% if registration.staff_confirmed %}<td class="bg-success">{% trans "Yes" %}</td>{% else %}<td class="bg-danger">{% trans "No" %}</td>{% endif %}
+					<td>{{ registration.contact_name }}</td>
+					<td>{{ registration.comment }}</td>
+					<td><a href="{% url 'detail-registration' camp.pk registration.pk %}" class="btn btn-primary btn-sm" role="button">{% trans "View" %}</a></td>
+					<td><a href="{% url 'update-registration' camp.pk registration.pk %}" class="btn btn-primary btn-sm" role="button">{% trans "Edit" %}</a></td>
+					<td><a href="{% url 'delete-registration' camp.pk registration.pk %}" class="btn btn-default btn-sm" role="button">
+						<span class="fas fa-trash"></span>
+						</a></td>
+				</tr>
+			{% endfor %}
+		</tbody>
+	</table>
+{% endif %}
+{% endblock %}

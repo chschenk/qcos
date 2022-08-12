@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% load i18n %}
+{% block base_active %}active{% endblock %}
+{% block title %}{% trans "Organizers" %}{% endblock %}
+{% block header %}{% trans "Organizers" %}{% endblock %}
+{% block actions %}
+{% if perms.user.add %}
+	<a href="{% url 'create-organizer' %}" class="btn btn-default btn-sm btn-favorite" role="button">
+		{% trans "Add Organizer" %}<span class="fas fa-plus"></span>
+	</a>
+{% endif %}
+{% endblock %}
+{% block body %}
+{% if object_list %}
+	<table class="table table-striped">
+		<thead>
+			<tr>
+				<th scope="col">{% trans "Name" %}</th>
+				<th scope="col">{% trans "View" %}</th>
+				{% if perms.group.update %}<th scope="col">{% trans "Edit" %}</th>{% endif %}
+				{% if perms.group.delete %}<th scope="col">{% trans "Delete" %}</th>{% endif %}
+			</tr>
+		</thead>
+		<tbody>
+			{% for group in object_list %}
+				<tr>
+					<th scope="row">{{ group.name }}</th>
+					<td><a href="{% url 'detail-organizer' group.pk %}" class="btn btn-primary btn-sm" role="button">{% trans "View" %}</a></td>
+					{% if perms.group.update %}<td><a href="{% url 'update-organizer' group.pk %}" class="btn btn-primary btn-sm" role="button">{% trans "Edit" %}</a></td>{% endif %}
+					{% if perms.group.delete %}<td><a href="{% url 'delete-organizer' group.pk %}" class="btn btn-default btn-sm" role="button">
+						<span class="fas fa-trash"></span>
+						</a></td>
+					{% endif %}
+				</tr>
+			{% endfor %}
+		</tbody>
+	</table>
+{% endif %}
+{% endblock %}

@@ -1,9 +1,0 @@
-{% extends 'confirm_delete.html' %}
-{% load i18n %}
-{% block camps_active %}active{% endblock %}
-{% block title %}{% trans "Delete Camp" %}{% endblock %}
-{%block breadcrum%}
-	<li class="breadcrumb-item"><a href="{% url 'camps:list-camps' %}">{% trans "Camps" %}</a></li>
-	<li class="breadcrumb-item active" aria-current="page">{% blocktrans %}Delete Camp {{ object.name }}{% endblocktrans %}</li>
-{% endblock %}
-{% block type %}{% trans "Camp" %}{% endblock %}

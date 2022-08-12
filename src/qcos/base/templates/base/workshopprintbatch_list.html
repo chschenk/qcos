@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% load i18n %}
+{% block base_active %}active{% endblock %}
+{% block title %}{% trans "Workshop print batches for" %} {{camp}}{% endblock %}
+{% block header %}{% trans "Workshop print batches for" %} {{camp}}{% endblock %}
+{% block body %}
+{% if object_list %}
+	<table class="table table-striped">
+		<thead>
+			<tr>
+				<th scope="col">{% trans "Created" %}</th>
+				<th scope="col">{% trans "Workshops" %}</th>
+				<th scope="col">{% trans "Download" %}</th>
+				<th scope="col">{% trans "Delete" %}</th>
+			</tr>
+		</thead>
+		<tbody>
+			{% for batch in object_list %}
+				<tr>
+					<th scope="row">{{ batch.created }}</th>
+					<td>{{ batch.workshop_set.count }}</td>
+					<td><a href="{% url 'download-workshopprint' camp.pk batch.pk %}" class="btn btn-default btn-sm" role="button">
+						<span class="fas fa-download"></span>
+						</a></td>
+					<td><a href="{#% url 'delete-workshop' camp.pk workshop.registration.pk workshop.pk %#}" class="btn btn-default btn-sm" role="button">
+						<span class="fas fa-trash"></span>
+						</a></td>
+				</tr>
+			{% endfor %}
+		</tbody>
+	</table>
+{% else %}
+<h3>{% trans "There are no print batches for this camp" %}</h3>
+{% endif %}
+{% endblock %}

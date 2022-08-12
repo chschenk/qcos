@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% load i18n %}
+{% block base_active %}active{% endblock %}
+{% block title %}{% trans "Organizer" %} {{ object.name }}{% endblock %}
+{% block header %}{% trans "Organizer" %} {{ object.name }}{% endblock %}
+
+{% block body %}
+	{% if object.user_set.all|length > 0 %}
+		<h4>{% trans "Members of this organizer:" %}</h4>
+			<table class="table table-striped">
+				<thead>
+					<tr>
+						<th scope="col">{% trans "Name" %}</th>
+						<th scope="col">{% trans "First name" %}</th>
+						<th scope="col">{% trans "Last name" %}</th>
+						<th scope="col">{% trans "Email" %}</th>
+					</tr>
+				</thead>
+				<tbody>
+					{% for u in object.user_set.all %}
+						<tr>
+							<td>{{ u.username }}</td>
+							<td>{{ u.first_name }}</td>
+							<td>{{ u.last_name }}</td>
+							<td>{{ u.email }}</td>
+						</tr>
+					{% endfor %}
+		</tbody>
+	</table>
+	{% else %}
+		<h4>{% trans "This organizer has no members" %}</h4>
+	{% endif %}
+		{% if object.camp_set.all|length > 0 %}
+		<h4>{% trans "Camps of this organizer:" %}</h4>
+	{% else %}
+		<h4>{% trans "This organizer has no camps" %}</h4>
+	{% endif %}
+{% endblock %}

@@ -1,0 +1,64 @@
+{% load i18n %}
+{% load bootstrap4 %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>QCOS - {% block title %}{% endblock %}</title>
+	{% load staticfiles %}
+	{% bootstrap_css %}
+    {% bootstrap_javascript jquery='full' %}
+
+	<link rel="shortcut icon" type="image/png" href="{%  static 'favicon.ico' %}"/>
+	<link rel="stylesheet" type="text/css" href="{% static 'camps/style.css' %}"/>
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.1/css/all.css" integrity="sha384-O8whS3fhG2OnA5Kas0Y9l3cfpmYjapjI0E4theH4iuMD+pLhbf6JI0jIMfYcK3yZ" crossorigin="anonymous">
+	{% load static %}
+	{% block head %}{% endblock %}
+</head>
+<body class="text-center">
+<nav class="navbar navbar-expand-lg navbar-dark bg-success">
+	<div class="container-fluid">
+		<!-- Header -->
+		<div class="navbar-header">
+			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggler" aria-controls="navbarToggler" aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+		</div>
+
+		<!-- Items -->
+		<div class="collapse navbar-collapse" id="navbarToggler">
+			<a class="navbar-brand" href="{#% url 'base:list-camps' %#}">QCOS</a>
+			<ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+				{% if user.is_authenticated %}
+					<li class="nav-item {% block camps_active %}{% endblock %}">
+						<a class="nav-link" href="{#% url 'base:list-camps' %#}">{% trans "Camps" %}</a>
+					</li>
+					<li class="nav-item {% block base_active %}{% endblock %}">
+						<a class="nav-link" href="{#% url 'base:list-dioceses' %#}">{% trans "Base data" %}</a>
+					</li>
+					<li class="nav-item {% block camp_registration_active %}{% endblock %}">
+						<a class="nav-link" href="{#% url 'base:list-camps' %#}">{% trans "Registrations" %}</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="{% url 'logout' %}">
+						{% trans "Logout" %}</a>
+					</li>
+				{% else %}
+					<li class="nav-item {% block login_active %}{% endblock %}">
+						<a class="nav-link" href="{% url 'login' %}">{% trans "Login" %}</a>
+					</li>
+				{% endif %}
+			</ul>
+		</div>
+</nav>
+<nav aria-label="breadcrumb">
+	<ol class="breadcrumb">
+		{% block breadcrumb %}{% endblock %}
+	</ol>
+</nav>
+<h1>{% block header %}{% endblock %}</h1>
+{% bootstrap_messages %}
+{% block body %}
+{% endblock %}
+</body>
+</html>

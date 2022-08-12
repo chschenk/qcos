@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% load i18n %}
+{% block base_active %}active{% endblock %}
+{% block title %}{% trans "Check-in participants for " %} {{camp}}{% endblock %}
+{% block header %}{% trans "Check-in participants for " %} {{camp}}{% endblock %}
+{% block body %}
+{% if object_list %}
+	<table class="table table-striped">
+		<thead>
+			<tr>
+				<th scope="col">{% trans "Diocese" %}</th>
+				<th scope="col">{% trans "District" %}</th>
+				<th scope="col">{% trans "Clan" %}</th>
+				<th scope="col">{% trans "Contact" %}</th>
+				<th scope="col">{% trans "Check-in" %}</th>
+			</tr>
+		</thead>
+		<tbody>
+			{% for registration in object_list %}
+				<tr>
+					<td>{{ registration.clan.district.diocese.name }}</td>
+					<td>{{ registration.clan.district.name }}</td>
+					<td>{{ registration.clan.name }}</td>
+					<td>{{ registration.contact_name }}</td>
+					<td><a href="{% url 'checkin-participant' camp.pk registration.pk %}" class="btn btn-primary btn-sm" role="button">{% trans "Check-in" %}</a></td>
+				</tr>
+			{% endfor %}
+		</tbody>
+	</table>
+{% endif %}
+{% endblock %}
