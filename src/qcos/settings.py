@@ -21,12 +21,27 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/2.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = '@2_8-#y8(b4f(62$&ezytjzo3cz^*1y3*(=^5()-g20v1=qn!4'
+SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', None)
+if SECRET_KEY is None:
+    SECRET_FILE = os.path.join(BASE_DIR, '.secret')
+    if os.path.exists(SECRET_FILE):
+        with open(SECRET_FILE, 'r') as f:
+            SECRET_KEY = f.read().strip()
+    else:
+        chars = 'abcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*(-_=+)'
+        SECRET_KEY = get_random_string(50, chars)
+        with open(SECRET_FILE, 'w') as f:
+            os.chmod(SECRET_FILE, 0o600)
+            try:
+                os.chown(SECRET_FILE, os.getuid(), os.getgid())
+            except AttributeError:
+                pass  # os.chown is not available on Windows
+            f.write(SECRET_KEY)
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = os.environ.get('DJANGO_DEBUG', 'False').lower() in ['true', 'yes', '1']
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [] if os.environ.get('DJANGO_ALLOWED_HOSTS', None) is None else os.environ.get('DJANGO_ALLOWED_HOSTS', None).split(',')
 
 
 # Application definition
@@ -83,8 +98,12 @@ DEFAULT_AUTO_FIELD = 'django.db.models.AutoField'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.' + os.environ.get('DJANGO_DB_BACKEND', 'sqlite3'),
+        'NAME': os.environ.get('DJANGO_DB_NAME', os.path.join(BASE_DIR, 'db.sqlite3')),
+        'USER': os.environ.get('DJANGO_DB_USER', ''),
+        'PASSWORD': os.environ.get('DJANGO_DB_PASSWORD', ''),
+        'HOST': os.environ.get('DJANGO_DB_HOST', ''),
+        'PORT': os.environ.get('DJANGO_DB_PORT', ''),
     }
 }
 
@@ -113,7 +132,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Europe/Berlin'
 
 USE_I18N = True
 
@@ -126,6 +145,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.1/howto/static-files/
 
 STATIC_URL = '/static/'
+STATIC_ROOT = os.environ.get('DJANGO_STATIC_ROOT', './collected_static')
 
 #LOGIN_URL = reverse_lazy('login')
 #LOGOUT_URL = reverse_lazy('logout')
