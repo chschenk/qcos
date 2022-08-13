@@ -148,7 +148,7 @@ class ClanDeleteView(LoginRequiredMixin, DeleteView):
 
 class UserListView(LoginRequiredMixin, ListView):
 	model = User
-	ordering = ['name']
+	ordering = ['username']
 
 
 class UserCreateView(PermissionRequiredMixin, CreateView):
