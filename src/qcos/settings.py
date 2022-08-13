@@ -42,7 +42,7 @@ if SECRET_KEY is None:
 DEBUG = os.environ.get('DJANGO_DEBUG', 'False').lower() in ['true', 'yes', '1']
 
 ALLOWED_HOSTS = [] if os.environ.get('DJANGO_ALLOWED_HOSTS', None) is None else os.environ.get('DJANGO_ALLOWED_HOSTS', None).split(',')
-
+CSRF_TRUSTED_ORIGINS = [] if os.environ.get('DJANGO_CSRF_TRUSTED_ORIGINS', None) is None else os.environ.get('DJANGO_CSRF_TRUSTED_ORIGINS', None).split(',')
 
 # Application definition
 
