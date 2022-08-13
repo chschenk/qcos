@@ -32,6 +32,26 @@
 	{% endif %}
 		{% if object.camp_set.all|length > 0 %}
 		<h4>{% trans "Camps of this organizer:" %}</h4>
+			<table class="table table-striped">
+				<thead>
+					<tr>
+						<th scope="col">{% trans "Name" %}</th>
+						<th scope="col">{% trans "Start date" %}</th>
+						<th scope="col">{% trans "End date" %}</th>
+						<th scope="col">{% trans "Description" %}</th>
+					</tr>
+				</thead>
+				<tbody>
+					{% for camp in object.camp_set.all %}
+						<tr>
+							<th scope="row">{{ camp.name }}</th>
+							<td>{{ camp.start_date }}</td>
+							<td>{{ camp.end_date }}</td>
+							<td>{{ camp.description }}</td>
+						</tr>
+					{% endfor %}
+			</tbody>
+		</table>
 	{% else %}
 		<h4>{% trans "This organizer has no camps" %}</h4>
 	{% endif %}
