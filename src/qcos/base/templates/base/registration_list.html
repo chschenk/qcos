@@ -4,11 +4,9 @@
 {% block title %}{% trans "Registrations for" %} {{camp}}{% endblock %}
 {% block header %}{% trans "Registrations for" %} {{camp}}{% endblock %}
 {% block actions %}
-{% if perms.camp.add %}
-	<a href="{% url 'create-registration' camp.id %}" class="btn btn-default btn-sm btn-favorite" role="button">
-		{% trans "Add registration" %}<span class="fas fa-plus"></span>
-	</a>
-{% endif %}
+		<a href="{% url 'create-registration' camp.pk %}" class="btn btn-default btn-sm btn-favorite" role="button">
+			{% trans "Add registration" %}<span class="fas fa-user-plus"></span>
+		</a>
 {% endblock %}
 {% block body %}
 {% if object_list %}
