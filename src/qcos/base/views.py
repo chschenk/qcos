@@ -7,7 +7,6 @@ from django.shortcuts import get_object_or_404, render, HttpResponseRedirect
 from django.contrib.auth.models import User, Group
 from django.db.models import Max
 from django.http import HttpResponse
-from xlwt import Workbook
 from xlsxwriter import Workbook
 from qcos.base.models import Diocese, District, Clan, Camp, Fee, Registration, TicketInfo, Workshop, WorkshopPrintBatch
 from qcos.base.forms import SignUpForm, OrganizerForm, TicketInfoForm, RegistrationForm, CheckInFormStep1
