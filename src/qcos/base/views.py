@@ -576,7 +576,7 @@ class WorkshopPrintBatchDownloadView(LoginRequiredMixin, View):
 			sheet.write(row, 3, str(workshop.name))
 			sheet.write(row, 4, int(workshop.annotated_id))
 			row += 1
-		filename="Workshops-{}.xlsx".format(batch.created.strftime("%Y-%m-%d-%H-%M"))
+		filename="Workshops-{}.xls".format(batch.created.strftime("%Y-%m-%d-%H-%M"))
 		response = HttpResponse(content_type='application/ms-excel')
 		workbook.save(response)
 		response['Content-Disposition'] = 'attachment; filename={}'.format(filename)
