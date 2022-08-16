@@ -54,6 +54,30 @@ class Camp(Model):
 			count += fee.quantity()
 		return count
 
+	def present_participants(self):
+		count = 0
+		for registration in self.registration_set.all():
+			count += registration.present_participants
+		return count
+
+	def registered_participants(self):
+		count = 0
+		for registration in self.registration_set.all():
+			count += registration.registered_participants
+		return count
+
+	def total_price(self):
+		price = 0
+		for fee in self.fee_set.all():
+			price += fee.total_price()
+		return price
+
+	def total_paid(self):
+		paid = 0
+		for registration in self.registration_set.all():
+			paid += registration.paid
+		return paid
+
 	def __str__(self):
 		return self.name
 
@@ -74,6 +98,8 @@ class Fee(Model):
 			count += ticket_info.quantity
 		return count
 
+	def total_price(self):
+		return self.quantity() * self.price
 
 	def __str__(self):
 		return self.name

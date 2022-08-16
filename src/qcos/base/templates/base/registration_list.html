@@ -56,6 +56,25 @@
 						</a></td>
 				</tr>
 			{% endfor %}
+			<tr>
+				<th scope="row">{% trans "Sum" %}</th>
+				{% for fee in camp.fee_set.all %}
+					<td><b>{{ fee.quantity }}</b></td>
+				{% endfor %}
+				<td><b>{{ camp.registration_quantity }}</b></td>
+				<td><b>{{ camp.present_participants }}</b></td>
+				<td class="{% if camp.registered_participants == camp.present_participants%}bg-success{% else %}bg-danger{% endif %}"><b>{{ camp.registered_participants }}</b></td>
+				<td><b>{{ camp.total_price }}</b></td>
+				<td class="{% if camp.total_price == camp.total_paid %}bg-success{% else %}bg-danger{% endif %}"><b>{{ camp.total_paid }}</b></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+			</tr>
 		</tbody>
 	</table>
 {% endif %}
