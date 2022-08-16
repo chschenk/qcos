@@ -42,8 +42,8 @@
 					<td>{{ registration.participants }}</td>
 					<td>{{ registration.present_participants }}</td>
 					<td class="{% if registration.registered_participants == registration.present_participants%}bg-success{% else %}bg-danger{% endif %}">{{ registration.registered_participants }}</td>
-					<td>{{ registration.get_price }}</td>
-					<td class="{% if registration.get_price == registration.paid%}bg-success{% else %}bg-danger{% endif %}">{{ registration.paid }}</td>
+					<td>{{ registration.get_price }}€</td>
+					<td class="{% if registration.get_price == registration.paid%}bg-success{% else %}bg-danger{% endif %}">{{ registration.paid }}€</td>
 					{% if registration.rules_accepted %}<td class="bg-success">{% trans "Yes" %}</td>{% else %}<td class="bg-danger">{% trans "No" %}</td>{% endif %}
 					{% if registration.picture_rights %}<td class="bg-success">{% trans "Yes" %}</td>{% else %}<td class="bg-danger">{% trans "No" %}</td>{% endif %}
 					{% if registration.staff_confirmed %}<td class="bg-success">{% trans "Yes" %}</td>{% else %}<td class="bg-danger">{% trans "No" %}</td>{% endif %}
@@ -64,8 +64,8 @@
 				<td><b>{{ camp.registration_quantity }}</b></td>
 				<td><b>{{ camp.present_participants }}</b></td>
 				<td class="{% if camp.registered_participants == camp.present_participants%}bg-success{% else %}bg-danger{% endif %}"><b>{{ camp.registered_participants }}</b></td>
-				<td><b>{{ camp.total_price }}</b></td>
-				<td class="{% if camp.total_price == camp.total_paid %}bg-success{% else %}bg-danger{% endif %}"><b>{{ camp.total_paid }}</b></td>
+				<td><b>{{ camp.total_price }}€</b></td>
+				<td class="{% if camp.total_price == camp.total_paid %}bg-success{% else %}bg-danger{% endif %}"><b>{{ camp.total_paid }}€</b></td>
 				<td></td>
 				<td></td>
 				<td></td>
