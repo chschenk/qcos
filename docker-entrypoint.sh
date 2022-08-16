@@ -1,7 +1,7 @@
 #!/bin/sh
 python manage.py migrate --noinput
 python manage.py collectstatic --noinput
-python manage.py compilemessages --noinput
+python manage.py compilemessages
 
 # Start Gunicorn processes
 exec gunicorn qcos.wsgi:application \
