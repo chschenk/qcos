@@ -1,3 +1,4 @@
+from io import BytesIO
 from django.views.generic import CreateView, ListView, DeleteView, DetailView, UpdateView, FormView, View, TemplateView
 from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin
 from django.utils.translation import gettext as _
@@ -7,6 +8,7 @@ from django.contrib.auth.models import User, Group
 from django.db.models import Max
 from django.http import HttpResponse
 from xlwt import Workbook
+from xlsxwriter import Workbook
 from qcos.base.models import Diocese, District, Clan, Camp, Fee, Registration, TicketInfo, Workshop, WorkshopPrintBatch
 from qcos.base.forms import SignUpForm, OrganizerForm, TicketInfoForm, RegistrationForm, CheckInFormStep1
 from qcos.base.forms import CheckInFormStep2, WorkshopAnnotateForm, WorkshopPrintForm
@@ -561,8 +563,9 @@ class WorkshopPrintBatchDownloadView(LoginRequiredMixin, View):
 
 	def get(self, request, *args, **kwargs):
 		batch = get_object_or_404(WorkshopPrintBatch, pk=self.kwargs['batch_pk'])
-		workbook = Workbook()
-		sheet = workbook.add_sheet(_("Workshops"))
+		output = BytesIO()
+		workbook = Workbook(output)
+		sheet = workbook.add_worksheet(_("Workshops"))
 		sheet.write(0, 0, _("Diocese"))
 		sheet.write(0, 1, _("District"))
 		sheet.write(0, 2, _("Clan"))
@@ -576,9 +579,12 @@ class WorkshopPrintBatchDownloadView(LoginRequiredMixin, View):
 			sheet.write(row, 3, str(workshop.name))
 			sheet.write(row, 4, int(workshop.annotated_id))
 			row += 1
-		filename="Workshops-{}.xls".format(batch.created.strftime("%Y-%m-%d-%H-%M"))
-		response = HttpResponse(content_type='application/ms-excel')
-		workbook.save(response)
+
+		workbook.close()
+		output.seek(0)
+		filename="Workshops-{}.xlsx".format(batch.created.strftime("%Y-%m-%d-%H-%M"))
+		response = HttpResponse(output,
+								content_type='application/vnd.openxmlformats-officedocument.spreadsheetml.sheet')
 		response['Content-Disposition'] = 'attachment; filename={}'.format(filename)
 		return response
 
@@ -604,8 +610,9 @@ class RegistrationDownloadView(LoginRequiredMixin, View):
 
 	def get(self, request, *args, **kwargs):
 		camp = get_object_or_404(Camp, pk=self.kwargs['camp_pk'])
-		workbook = Workbook()
-		sheet = workbook.add_sheet(_("Registrations"))
+		output = BytesIO()
+		workbook = Workbook(output)
+		sheet = workbook.add_worksheet(_("Registrations"))
 		col = 0
 		sheet.write(0, col, _("Diocese"))
 		col += 1
@@ -686,8 +693,9 @@ class RegistrationDownloadView(LoginRequiredMixin, View):
 			sheet.write(row, col, str(registration.telephone))
 			col += 1
 			row += 1
-		filename="Registrations-{}.xls".format(camp.name)
-		response = HttpResponse(content_type='application/ms-excel')
-		workbook.save(response)
+		workbook.close()
+		output.seek(0)
+		filename="Registrations-{}.xlsx".format(camp.name)
+		response = HttpResponse(output, content_type='application/vnd.openxmlformats-officedocument.spreadsheetml.sheet')
 		response['Content-Disposition'] = 'attachment; filename={}'.format(filename)
 		return response

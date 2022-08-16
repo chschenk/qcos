@@ -3,4 +3,4 @@ django-model-utils
 django-bootstrap4
 django-select2
 psycopg2
-xlwt
+xlsxwriter
