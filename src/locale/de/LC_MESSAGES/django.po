@@ -1,0 +1,809 @@
+# German translation file
+# Copyright (C) 2022
+# This file is distributed under the same license as the PACKAGE package.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"POT-Creation-Date: 2022-08-16 19:18+0200\n"
+"Language: German\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: qcos/base/forms.py:82
+msgid "Annotate all workshop with status ok"
+msgstr "Alle Workshop mit Status OK durchnummerieren"
+
+#: qcos/base/forms.py:86
+msgid "Generate a print batch for all unprinted workshops"
+msgstr "Einen Druckauftrag für alle ungedruckten Workshops erstellen"
+
+#: qcos/base/templates/auth/group_confirm_delete.html:4
+msgid "Delete Organizer"
+msgstr "Organisator löschen"
+
+#: qcos/base/templates/auth/group_confirm_delete.html:5
+#: qcos/base/templates/auth/group_detail.html:4
+#: qcos/base/templates/auth/group_detail.html:5
+#: qcos/base/templates/base/camp_detail.html:22
+#: qcos/base/templates/base/camp_list.html:17
+msgid "Organizer"
+msgstr "Organisator"
+
+#: qcos/base/templates/auth/group_detail.html:9
+msgid "Members of this organizer:"
+msgstr "Mitglieder dieses Organisators:"
+
+#: qcos/base/templates/auth/group_detail.html:13
+#: qcos/base/templates/auth/group_detail.html:38
+#: qcos/base/templates/auth/group_list.html:18
+#: qcos/base/templates/base/camp_detail.html:18
+#: qcos/base/templates/base/camp_detail.html:44
+#: qcos/base/templates/base/checkin_step3.html:14
+#: qcos/base/templates/base/registration_detail.html:111
+#: qcos/base/templates/base/workshop_list.html:20 qcos/base/views.py:569
+msgid "Name"
+msgstr "Name"
+
+#: qcos/base/templates/auth/group_detail.html:14
+#: qcos/base/templates/auth/user_detail.html:16
+#: qcos/base/templates/auth/user_list.html:19
+#: qcos/base/templates/auth/user_profile.html:19
+msgid "First name"
+msgstr "Vorname"
+
+#: qcos/base/templates/auth/group_detail.html:15
+#: qcos/base/templates/auth/user_detail.html:20
+#: qcos/base/templates/auth/user_list.html:20
+#: qcos/base/templates/auth/user_profile.html:23
+msgid "Last name"
+msgstr "Nachname"
+
+#: qcos/base/templates/auth/group_detail.html:16
+msgid "Email"
+msgstr "Email"
+
+#: qcos/base/templates/auth/group_detail.html:31
+msgid "This organizer has no members"
+msgstr "Dieser Organisator hat keine Mitglieder"
+
+#: qcos/base/templates/auth/group_detail.html:34
+msgid "Camps of this organizer:"
+msgstr "Camps von diesen Organisator"
+
+#: qcos/base/templates/auth/group_detail.html:39
+#: qcos/base/templates/base/camp_detail.html:26
+#: qcos/base/templates/base/camp_detail.html:46
+#: qcos/base/templates/base/camp_list.html:18
+msgid "Start date"
+msgstr "Startdatum"
+
+#: qcos/base/templates/auth/group_detail.html:40
+#: qcos/base/templates/base/camp_detail.html:30
+#: qcos/base/templates/base/camp_detail.html:47
+#: qcos/base/templates/base/camp_list.html:19
+msgid "End date"
+msgstr "Enddatum"
+
+#: qcos/base/templates/auth/group_detail.html:41
+#: qcos/base/templates/base/camp_detail.html:34
+#: qcos/base/templates/base/camp_list.html:20
+#: qcos/base/templates/base/checkin_step3.html:15
+#: qcos/base/templates/base/registration_detail.html:112
+#: qcos/base/templates/base/workshop_list.html:21
+msgid "Description"
+msgstr "Beschreibung"
+
+#: qcos/base/templates/auth/group_detail.html:56
+msgid "This organizer has no camps"
+msgstr "Dieser Organisator hat keine Camps"
+
+#: qcos/base/templates/auth/group_form.html:6
+#: qcos/base/templates/auth/group_form.html:7
+#, python-format
+msgid "%(mode)s Group"
+msgstr "%(mode)s Organisator"
+
+#: qcos/base/templates/auth/group_form.html:17
+#: qcos/base/templates/auth/user_form.html:15
+#: qcos/base/templates/base/camp_form.html:16
+#: qcos/base/templates/base/clan_form.html:15
+#: qcos/base/templates/base/diocese_form.html:15
+#: qcos/base/templates/base/district_form.html:14
+#: qcos/base/templates/base/fee_form.html:15
+#: qcos/base/templates/base/workshop_form.html:16
+#: templates/registration/password_change_form.html:13
+#: templates/registration/password_reset_confirm.html:14
+#: templates/registration/password_reset_form.html:13
+msgid "Save"
+msgstr "Speichern"
+
+#: qcos/base/templates/auth/group_list.html:4
+#: qcos/base/templates/auth/group_list.html:5
+msgid "Organizers"
+msgstr "Organisatoren"
+
+#: qcos/base/templates/auth/group_list.html:9
+msgid "Add Organizer"
+msgstr "Organisator hinzufügen"
+
+#: qcos/base/templates/auth/group_list.html:19
+#: qcos/base/templates/auth/group_list.html:28
+#: qcos/base/templates/auth/user_list.html:22
+#: qcos/base/templates/auth/user_list.html:34
+#: qcos/base/templates/base/camp_list.html:21
+#: qcos/base/templates/base/camp_list.html:34
+#: qcos/base/templates/base/diocese_detail.html:18
+#: qcos/base/templates/base/diocese_detail.html:27
+#: qcos/base/templates/base/diocese_list.html:17
+#: qcos/base/templates/base/diocese_list.html:26
+#: qcos/base/templates/base/registration_list.html:33
+#: qcos/base/templates/base/registration_list.html:55
+msgid "View"
+msgstr "Anzeigen"
+
+#: qcos/base/templates/auth/group_list.html:20
+#: qcos/base/templates/auth/group_list.html:29
+#: qcos/base/templates/auth/user_list.html:23
+#: qcos/base/templates/auth/user_list.html:35
+#: qcos/base/templates/base/camp_detail.html:50
+#: qcos/base/templates/base/camp_detail.html:63
+#: qcos/base/templates/base/camp_list.html:22
+#: qcos/base/templates/base/camp_list.html:35
+#: qcos/base/templates/base/diocese_detail.html:19
+#: qcos/base/templates/base/diocese_detail.html:28
+#: qcos/base/templates/base/diocese_list.html:18
+#: qcos/base/templates/base/diocese_list.html:27
+#: qcos/base/templates/base/district_detail.html:17
+#: qcos/base/templates/base/district_detail.html:25
+#: qcos/base/templates/base/registration_detail.html:116
+#: qcos/base/templates/base/registration_detail.html:128
+#: qcos/base/templates/base/registration_list.html:34
+#: qcos/base/templates/base/registration_list.html:56
+#: qcos/base/templates/base/workshop_list.html:25
+#: qcos/base/templates/base/workshop_list.html:38
+msgid "Edit"
+msgstr "Bearbeiten"
+
+#: qcos/base/templates/auth/group_list.html:21
+#: qcos/base/templates/auth/user_list.html:24
+#: qcos/base/templates/base/camp_detail.html:51
+#: qcos/base/templates/base/camp_detail.html:64
+#: qcos/base/templates/base/camp_list.html:23
+#: qcos/base/templates/base/diocese_detail.html:20
+#: qcos/base/templates/base/diocese_list.html:19
+#: qcos/base/templates/base/district_detail.html:18
+#: qcos/base/templates/base/registration_detail.html:117
+#: qcos/base/templates/base/registration_list.html:35
+#: qcos/base/templates/base/workshop_list.html:26
+#: qcos/base/templates/base/workshopprintbatch_list.html:14
+#: templates/confirm_delete.html:7
+msgid "Delete"
+msgstr "Löschen"
+
+#: qcos/base/templates/auth/user_confirm_delete.html:4
+msgid "Delete User"
+msgstr "Benutzer löschen"
+
+#: qcos/base/templates/auth/user_confirm_delete.html:5
+#: qcos/base/templates/auth/user_detail.html:4
+#: qcos/base/templates/auth/user_detail.html:5
+msgid "User"
+msgstr "Benutzer"
+
+#: qcos/base/templates/auth/user_detail.html:8
+msgid "User data from"
+msgstr "Benutzerdaten"
+
+#: qcos/base/templates/auth/user_detail.html:12
+#: qcos/base/templates/auth/user_list.html:18
+#: qcos/base/templates/auth/user_profile.html:15
+msgid "Username"
+msgstr "Benutzername"
+
+#: qcos/base/templates/auth/user_detail.html:24
+#: qcos/base/templates/auth/user_profile.html:27
+#: qcos/base/templates/base/checkin_step1.html:29
+#: qcos/base/templates/base/registration_detail.html:42 qcos/base/views.py:639
+msgid "E-Mail"
+msgstr "E-Mail"
+
+#: qcos/base/templates/auth/user_detail.html:28
+msgid "Member of this organizers"
+msgstr "Mitglieder dieses Organisators"
+
+#: qcos/base/templates/auth/user_form.html:6
+#: qcos/base/templates/auth/user_form.html:7
+#, python-format
+msgid "%(mode)s User"
+msgstr "Benutzer %(mode)s"
+
+#: qcos/base/templates/auth/user_home.html:4
+msgid "Welcome to QCOS!"
+msgstr "Willkommen im QCOS!"
+
+#: qcos/base/templates/auth/user_home.html:5
+msgid "Welcome to QCOS"
+msgstr "Willkommen im QCOS"
+
+#: qcos/base/templates/auth/user_list.html:4
+#: qcos/base/templates/auth/user_list.html:5
+msgid "Users"
+msgstr "Benutzer"
+
+#: qcos/base/templates/auth/user_list.html:9
+msgid "Add User"
+msgstr "Benutzer hinzufügen"
+
+#: qcos/base/templates/auth/user_list.html:21
+msgid "Mail"
+msgstr "E-Mail"
+
+#: qcos/base/templates/auth/user_profile.html:4
+#: qcos/base/templates/auth/user_profile.html:5
+msgid "Your profile"
+msgstr "Dein Profil"
+
+#: qcos/base/templates/auth/user_profile.html:8
+msgid "Update profile"
+msgstr "Profil bearbeiten"
+
+#: qcos/base/templates/auth/user_profile.html:31
+msgid "You are member of this organizers"
+msgstr "Du bist ein Mitglied diesers Organisators"
+
+#: qcos/base/templates/base/camp_confirm_delete.html:4
+msgid "Delete camp"
+msgstr "Camp löschen"
+
+#: qcos/base/templates/base/camp_confirm_delete.html:5
+#: qcos/base/templates/base/camp_list.html:16
+#: qcos/base/templates/base/checkin_step1.html:17
+#: qcos/base/templates/base/registration_detail.html:22
+msgid "Camp"
+msgstr "Camp"
+
+#: qcos/base/templates/base/camp_detail.html:4
+#: qcos/base/templates/base/camp_detail.html:5
+#, python-format
+msgid "Camp %(object)s"
+msgstr "Camp %(object)s"
+
+#: qcos/base/templates/base/camp_detail.html:8
+msgid "Add fee"
+msgstr "Preisstufe hinzufügen"
+
+#: qcos/base/templates/base/camp_detail.html:11
+#: qcos/base/templates/base/registration_list.html:8
+msgid "Add registration"
+msgstr "Anmeldung hinzufügen"
+
+#: qcos/base/templates/base/camp_detail.html:40
+msgid "Fees"
+msgstr "Preisstufen"
+
+#: qcos/base/templates/base/camp_detail.html:45
+#: qcos/base/templates/base/registration_detail.html:86
+#: qcos/base/templates/base/registration_list.html:26 qcos/base/views.py:625
+msgid "Price"
+msgstr "Preis"
+
+#: qcos/base/templates/base/camp_detail.html:48 qcos/base/views.py:608
+#: templates/base.html:86
+msgid "Registrations"
+msgstr "Anmeldungen"
+
+#: qcos/base/templates/base/camp_detail.html:49
+msgid "Total price"
+msgstr "Gesamtpreis"
+
+#: qcos/base/templates/base/camp_detail.html:68
+#: qcos/base/templates/base/registration_detail.html:67
+#: qcos/base/templates/base/registration_list.html:23
+#: qcos/base/templates/base/registration_list.html:63
+msgid "Sum"
+msgstr "Summe"
+
+#: qcos/base/templates/base/camp_detail.html:80
+msgid "There are no fees associated with this camp. You can create one"
+msgstr "Dieses Camp hat noch keine Preisstufen. Bitte erstelle eine"
+
+#: qcos/base/templates/base/camp_detail.html:80
+msgid "here"
+msgstr "hier"
+
+#: qcos/base/templates/base/camp_form.html:6
+#: qcos/base/templates/base/camp_form.html:7
+#: qcos/base/templates/base/camp_list.html:4
+#: qcos/base/templates/base/camp_list.html:5
+msgid "Camps"
+msgstr "Camps"
+
+#: qcos/base/templates/base/camp_list.html:8
+msgid "Add Camp"
+msgstr "Camp hinzufügen"
+
+#: qcos/base/templates/base/checkin_step1.html:5
+#: qcos/base/templates/base/checkin_step1.html:6
+#: qcos/base/templates/base/checkin_step2.html:5
+#: qcos/base/templates/base/checkin_step2.html:6
+#: qcos/base/templates/base/checkin_step3.html:5
+#: qcos/base/templates/base/checkin_step3.html:6
+#, python-format
+msgid "Checkin for %(clan)s for %(camp)s"
+msgstr "Checkin für %(clan)s für %(camp)s"
+
+#: qcos/base/templates/base/checkin_step1.html:9
+#: qcos/base/templates/base/registration_detail.html:8
+msgid "Edit registration"
+msgstr "Anmeldung bearbeiten"
+
+#: qcos/base/templates/base/checkin_step1.html:13
+#: qcos/base/templates/base/registration_detail.html:18
+msgid "Registration overview"
+msgstr "Anmeldungsübersicht"
+
+#: qcos/base/templates/base/checkin_step1.html:21
+#: qcos/base/templates/base/clan_confirm_delete.html:5
+#: qcos/base/templates/base/district_detail.html:16
+#: qcos/base/templates/base/participant_checkin_list.html:13
+#: qcos/base/templates/base/registration_detail.html:34
+#: qcos/base/templates/base/registration_list.html:19
+#: qcos/base/templates/base/workshop_list.html:19 qcos/base/views.py:568
+#: qcos/base/views.py:614
+msgid "Clan"
+msgstr "Stamm"
+
+#: qcos/base/templates/base/checkin_step1.html:25
+#: qcos/base/templates/base/registration_detail.html:38
+msgid "Contact name"
+msgstr "Kontakt Name"
+
+#: qcos/base/templates/base/checkin_step1.html:33
+#: qcos/base/templates/base/registration_detail.html:46 qcos/base/views.py:641
+msgid "Telephone"
+msgstr "Telefon"
+
+#: qcos/base/templates/base/checkin_step1.html:37
+#: qcos/base/templates/base/registration_detail.html:50
+#: qcos/base/templates/base/registration_list.html:32 qcos/base/views.py:635
+msgid "Comment"
+msgstr "Bemerkung"
+
+#: qcos/base/templates/base/checkin_step1.html:42
+#: qcos/base/templates/base/registration_detail.html:55
+msgid "Ticket overview"
+msgstr "Ticketübersicht"
+
+#: qcos/base/templates/base/checkin_step1.html:53
+msgid "Total"
+msgstr "Gesamt"
+
+#: qcos/base/templates/base/checkin_step1.html:59
+#: qcos/base/templates/base/checkin_step2.html:10
+#: qcos/base/templates/base/workshop_form.html:10
+msgid "Check in"
+msgstr "Check-in"
+
+#: qcos/base/templates/base/checkin_step1.html:65
+#: qcos/base/templates/base/checkin_step2.html:16
+#: qcos/base/templates/base/registration_form.html:23
+msgid "Next"
+msgstr "Weiter"
+
+#: qcos/base/templates/base/checkin_step3.html:10
+#: qcos/base/templates/base/workshopprintbatch_list.html:12
+#: qcos/base/views.py:565 templates/base.html:92
+msgid "Workshops"
+msgstr "Workshops"
+
+#: qcos/base/templates/base/checkin_step3.html:16
+#: qcos/base/templates/base/registration_detail.html:113
+#: qcos/base/templates/base/workshop_list.html:22
+msgid "Status"
+msgstr "Status"
+
+#: qcos/base/templates/base/checkin_step3.html:17
+#: qcos/base/templates/base/registration_detail.html:114
+#: qcos/base/templates/base/workshop_list.html:23
+msgid "Number"
+msgstr "Nummer"
+
+#: qcos/base/templates/base/checkin_step3.html:18
+#: qcos/base/templates/base/registration_detail.html:115
+#: qcos/base/templates/base/workshop_list.html:24
+msgid "Printed"
+msgstr "Gedruckt"
+
+#: qcos/base/templates/base/clan_confirm_delete.html:4
+msgid "Delete Clan"
+msgstr "Stamm löschen"
+
+#: qcos/base/templates/base/clan_form.html:6
+#: qcos/base/templates/base/clan_form.html:7
+#, python-format
+msgid "District %(district)s - %(mode)s Clan"
+msgstr "Bezirk %(district)s - Stamm %(mode)s"
+
+#: qcos/base/templates/base/diocese_confirm_delete.html:4
+msgid "Delete Diocese"
+msgstr "Diözese löschen"
+
+#: qcos/base/templates/base/diocese_detail.html:4
+#: qcos/base/templates/base/diocese_detail.html:5
+#: qcos/base/templates/base/diocese_list.html:16
+#: qcos/base/templates/base/participant_checkin_list.html:11
+#: qcos/base/templates/base/registration_detail.html:26 qcos/base/views.py:566
+#: qcos/base/views.py:610
+msgid "Diocese"
+msgstr "Diözese"
+
+#: qcos/base/templates/base/diocese_detail.html:8
+msgid "Add District"
+msgstr "Bezirk hinzufügen"
+
+#: qcos/base/templates/base/diocese_detail.html:17
+#: qcos/base/templates/base/district_confirm_delete.html:5
+#: qcos/base/templates/base/participant_checkin_list.html:12
+#: qcos/base/templates/base/registration_detail.html:30 qcos/base/views.py:567
+#: qcos/base/views.py:612
+msgid "District"
+msgstr "Bezirk"
+
+#: qcos/base/templates/base/diocese_detail.html:37
+msgid "There are no districts in this diocese"
+msgstr "In dieser Diözese sind noch keine Bezirke vorhanden"
+
+#: qcos/base/templates/base/diocese_form.html:6
+#: qcos/base/templates/base/diocese_form.html:7
+#, python-format
+msgid "%(mode)s Diocese"
+msgstr "Diözese %(mode)s"
+
+#: qcos/base/templates/base/diocese_list.html:4
+#: qcos/base/templates/base/diocese_list.html:5
+msgid "Dioceses"
+msgstr "Diözesen"
+
+#: qcos/base/templates/base/diocese_list.html:8
+msgid "Add Diocese"
+msgstr "Diözese hinzufügen"
+
+#: qcos/base/templates/base/district_confirm_delete.html:4
+msgid "Delete District"
+msgstr "Bezirk löschen"
+
+#: qcos/base/templates/base/district_detail.html:4
+#: qcos/base/templates/base/district_detail.html:5
+#, python-format
+msgid "District %(object)s"
+msgstr "Bezirk %(object)s"
+
+#: qcos/base/templates/base/district_detail.html:8
+msgid "Add Clan"
+msgstr "Stamm hinzufügen"
+
+#: qcos/base/templates/base/district_detail.html:34
+msgid "There are no clans in this district"
+msgstr "In diesem Bezirk sind noch keine Stämme vorhanden"
+
+#: qcos/base/templates/base/district_form.html:5
+#: qcos/base/templates/base/district_form.html:6
+#, python-format
+msgid "%(diocese)s - %(mode)s District"
+msgstr "%(diocese)s - Bezirk %(mode)s"
+
+#: qcos/base/templates/base/fee_confirm_delete.html:4
+msgid "Delete fee from camp"
+msgstr "Preisstufe vom Camp löschen"
+
+#: qcos/base/templates/base/fee_confirm_delete.html:5
+msgid "the fee"
+msgstr "die Preisstufe"
+
+#: qcos/base/templates/base/fee_form.html:6
+#: qcos/base/templates/base/fee_form.html:7
+#, python-format
+msgid "Camp %(camp)s - %(mode)s Fee"
+msgstr "Camp %(camp)s - Preisstufe %(mode)s"
+
+#: qcos/base/templates/base/participant_checkin.html:5
+#: qcos/base/templates/base/participant_checkin.html:6
+#, python-format
+msgid "Checkin participants for %(clan)s for %(camp)s"
+msgstr "Teilnehmer Checkin für %(clan)s für %(camp)s"
+
+#: qcos/base/templates/base/participant_checkin.html:8
+msgid "Check in participants"
+msgstr "Teilnehmer Checkin"
+
+#: qcos/base/templates/base/participant_checkin.html:14
+#: qcos/base/templates/base/participant_checkin_list.html:15
+#: qcos/base/templates/base/participant_checkin_list.html:25
+#: qcos/base/templates/base/registration_detail.html:14
+msgid "Check-in"
+msgstr "Check-in"
+
+#: qcos/base/templates/base/participant_checkin_list.html:4
+#: qcos/base/templates/base/participant_checkin_list.html:5
+msgid "Check-in participants for "
+msgstr "Teilnehmer Checkin für"
+
+#: qcos/base/templates/base/participant_checkin_list.html:14
+#: qcos/base/templates/base/registration_list.html:31 qcos/base/views.py:637
+msgid "Contact"
+msgstr "Kontakt"
+
+#: qcos/base/templates/base/registration_confirm_delete.html:4
+msgid "Delete registration"
+msgstr "Anmeldung löschen"
+
+#: qcos/base/templates/base/registration_confirm_delete.html:5
+msgid "registration"
+msgstr "Anmeldung"
+
+#: qcos/base/templates/base/registration_detail.html:4
+#: qcos/base/templates/base/registration_detail.html:5
+#, python-format
+msgid "Registration from %(object.clan)s for %(camp)s"
+msgstr "Anmeldung von %(object.clan)s für %(camp)s"
+
+#: qcos/base/templates/base/registration_detail.html:11
+msgid "Add workshop"
+msgstr "Workshop hinzufügen"
+
+#: qcos/base/templates/base/registration_detail.html:74
+msgid "Check-in overview"
+msgstr "Check-in Übersicht"
+
+#: qcos/base/templates/base/registration_detail.html:78
+#: qcos/base/templates/base/registration_list.html:24
+msgid "Present"
+msgstr "Anwesend"
+
+#: qcos/base/templates/base/registration_detail.html:82
+#: qcos/base/templates/base/registration_list.html:25
+msgid "Registered"
+msgstr "Angemeldet"
+
+#: qcos/base/templates/base/registration_detail.html:90
+#: qcos/base/templates/base/registration_list.html:27 qcos/base/views.py:627
+msgid "Paid"
+msgstr "Bezahlt"
+
+#: qcos/base/templates/base/registration_detail.html:94
+#: qcos/base/templates/base/registration_list.html:28 qcos/base/views.py:629
+msgid "Rules accepted"
+msgstr "Regeln akzeptiert"
+
+#: qcos/base/templates/base/registration_detail.html:95
+#: qcos/base/templates/base/registration_detail.html:99
+#: qcos/base/templates/base/registration_detail.html:103
+#: qcos/base/templates/base/registration_detail.html:127
+#: qcos/base/templates/base/registration_list.html:50
+#: qcos/base/templates/base/registration_list.html:51
+#: qcos/base/templates/base/registration_list.html:52
+#: qcos/base/templates/base/workshop_list.html:37
+msgid "Yes"
+msgstr "Ja"
+
+#: qcos/base/templates/base/registration_detail.html:95
+#: qcos/base/templates/base/registration_detail.html:99
+#: qcos/base/templates/base/registration_detail.html:103
+#: qcos/base/templates/base/registration_detail.html:127
+#: qcos/base/templates/base/registration_list.html:50
+#: qcos/base/templates/base/registration_list.html:51
+#: qcos/base/templates/base/registration_list.html:52
+#: qcos/base/templates/base/workshop_list.html:37
+msgid "No"
+msgstr "Nein"
+
+#: qcos/base/templates/base/registration_detail.html:98
+#: qcos/base/templates/base/registration_list.html:29 qcos/base/views.py:631
+msgid "Picture rights"
+msgstr "Bildrechte"
+
+#: qcos/base/templates/base/registration_detail.html:102
+#: qcos/base/templates/base/registration_list.html:30 qcos/base/views.py:633
+msgid "Staff confirmed"
+msgstr "Bestätigung Personal"
+
+#: qcos/base/templates/base/registration_detail.html:107
+msgid "Workshop overview"
+msgstr "Workshopübersicht"
+
+#: qcos/base/templates/base/registration_detail.html:126
+#: qcos/base/templates/base/workshop_list.html:36
+msgid "Not yet annotated"
+msgstr "Noch nicht nummeriert"
+
+#: qcos/base/templates/base/registration_form.html:6
+#: qcos/base/templates/base/registration_form.html:7
+msgid "registration for"
+msgstr "Anmeldung von"
+
+#: qcos/base/templates/base/registration_list.html:4
+#: qcos/base/templates/base/registration_list.html:5
+msgid "Registrations for"
+msgstr "Anmeldung von"
+
+#: qcos/base/templates/base/registration_list.html:11
+msgid "Download registrations"
+msgstr "Anmeldungen herunterladen"
+
+#: qcos/base/templates/base/workshop_annotate.html:5
+#: qcos/base/templates/base/workshop_annotate.html:6
+msgid "Annotate workshops for"
+msgstr "Anmeldungen durchnummerieren für"
+
+#: qcos/base/templates/base/workshop_annotate.html:12
+#: qcos/base/templates/base/workshop_print.html:12
+msgid "Go"
+msgstr "Los"
+
+#: qcos/base/templates/base/workshop_confirm_delete.html:4
+msgid "Delete workshop"
+msgstr "Workshop löschen"
+
+#: qcos/base/templates/base/workshop_confirm_delete.html:5
+msgid "workshop"
+msgstr "Workshop"
+
+#: qcos/base/templates/base/workshop_form.html:5
+#: qcos/base/templates/base/workshop_form.html:6
+#, python-format
+msgid "Add workshop for %(clan)s for %(camp)s"
+msgstr "%(clan)s: Workshop für %(camp)s hinzufügen"
+
+#: qcos/base/templates/base/workshop_list.html:4
+#: qcos/base/templates/base/workshop_list.html:5
+msgid "Workshops for"
+msgstr "Workshops von"
+
+#: qcos/base/templates/base/workshop_list.html:8
+msgid "Annotate workshops"
+msgstr "Workshops durchnummerieren"
+
+#: qcos/base/templates/base/workshop_list.html:11
+msgid "Create new print batch"
+msgstr "Neuen Druckauftrag erstellen"
+
+#: qcos/base/templates/base/workshop_print.html:5
+#: qcos/base/templates/base/workshop_print.html:6
+msgid "Generate print batch for"
+msgstr "Neuen Druckauftrag erstellen für "
+
+#: qcos/base/templates/base/workshopprintbatch_list.html:4
+#: qcos/base/templates/base/workshopprintbatch_list.html:5
+msgid "Workshop print batches for"
+msgstr "Workshop Druckaufträge von"
+
+#: qcos/base/templates/base/workshopprintbatch_list.html:11
+msgid "Created"
+msgstr "Erstellt"
+
+#: qcos/base/templates/base/workshopprintbatch_list.html:13
+msgid "Download"
+msgstr "Download"
+
+#: qcos/base/templates/base/workshopprintbatch_list.html:33
+msgid "There are no print batches for this camp"
+msgstr "Es gibt keine Druckaufträge für dieses Camp"
+
+#: qcos/base/views.py:23 qcos/base/views.py:63 qcos/base/views.py:111
+#: qcos/base/views.py:162 qcos/base/views.py:210 qcos/base/views.py:248
+#: qcos/base/views.py:300 qcos/base/views.py:468
+msgid "Create"
+msgstr "Hinzufügen"
+
+#: qcos/base/views.py:40 qcos/base/views.py:86 qcos/base/views.py:134
+#: qcos/base/views.py:175 qcos/base/views.py:222 qcos/base/views.py:278
+#: qcos/base/views.py:324 qcos/base/views.py:385 qcos/base/views.py:485
+msgid "Update"
+msgstr "Bearbeiten"
+
+#: qcos/base/views.py:342
+msgid "New"
+msgstr "Neu"
+
+#: qcos/base/views.py:570
+msgid "Workshop ID"
+msgstr "Nummer"
+
+#: qcos/base/views.py:619
+msgid "Participants"
+msgstr "Teilnehmende"
+
+#: qcos/base/views.py:621
+msgid "Present participants"
+msgstr "Anwesende Teilnehmende"
+
+#: qcos/base/views.py:623
+msgid "Registered participants"
+msgstr "Angemeldete Teilnehmende"
+
+#: templates/base.html:46
+msgid "Manage users"
+msgstr "Benutzer verwalten"
+
+#: templates/base.html:52
+msgid "Manage organizers"
+msgstr "Organisatoren verwalten"
+
+#: templates/base.html:59
+msgid "Manage base data"
+msgstr "Stammdaten verwalten"
+
+#: templates/base.html:65
+msgid "Manage camps"
+msgstr "Camps verwalten"
+
+#: templates/base.html:80
+msgid "Overview"
+msgstr "Übersicht"
+
+#: templates/base.html:98
+msgid "Workshops print batches"
+msgstr "Workshop Druckaufträge"
+
+#: templates/base.html:104
+msgid "Check-in participants"
+msgstr "Teilnehmenden Check-in"
+
+#: templates/confirm_delete.html:3
+msgid "Confirm deletion"
+msgstr "Löschen bestätigen"
+
+#: templates/registration/login.html:5 templates/registration/login.html:6
+#: templates/registration/login.html:16
+msgid "Login"
+msgstr "Login"
+
+#: templates/registration/login.html:9
+msgid "You are already logged in!"
+msgstr "Du bist bereits eingeloggt!"
+
+#: templates/registration/logout.html:3 templates/registration/logout.html:4
+msgid "Logged out"
+msgstr "Ausgeloggt"
+
+#: templates/registration/logout.html:6
+msgid "Logged out successfully"
+msgstr "Erfolgreich ausgeloggt"
+
+#: templates/registration/password_change_done.html:4
+msgid "Password changed"
+msgstr "Passwort geändert"
+
+#: templates/registration/password_change_done.html:5
+msgid "Password change successful"
+msgstr "Passwort erfolgreich geändert"
+
+#: templates/registration/password_change_done.html:8
+msgid "Your password was changed."
+msgstr "Dein Passwort wurde geändert"
+
+#: templates/registration/password_change_form.html:5
+#: templates/registration/password_change_form.html:6
+msgid "Reset password"
+msgstr "Passwort zurücksetzen"
+
+#: templates/registration/password_reset_complete.html:4
+#: templates/registration/password_reset_complete.html:5
+msgid "Password set successfully"
+msgstr "Passwort erfolgreich gesetzt"
+
+#: templates/registration/password_reset_complete.html:8
+msgid "Your password has been set. You may go ahead and login now."
+msgstr "Passwort erfolgreich gesetzt. Du kannst dich jetzt einloggen."
+
+#: templates/registration/password_reset_confirm.html:5
+#: templates/registration/password_reset_confirm.html:6
+#: templates/registration/password_reset_done.html:4
+#: templates/registration/password_reset_done.html:5
+#: templates/registration/password_reset_form.html:5
+#: templates/registration/password_reset_form.html:6
+msgid "Password reset"
+msgstr "Passwort zurücksetzten"

@@ -130,7 +130,9 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/2.1/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = os.environ.get('DJANGO_LANGUAGE', 'en-us')
+
+LOCALE_PATHS = ( os.path.join(BASE_DIR, 'locale'), )
 
 TIME_ZONE = 'Europe/Berlin'
 
