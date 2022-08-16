@@ -1,4 +1,5 @@
 #!/bin/sh
+apt-get update && apt-get install gettext
 python manage.py migrate --noinput
 python manage.py collectstatic --noinput
 python manage.py compilemessages
