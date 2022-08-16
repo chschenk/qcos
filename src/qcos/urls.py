@@ -14,6 +14,7 @@ from qcos.base.views import RegestrationCheckinStep1View, RegestrationCheckinSte
 from qcos.base.views import WorkshopCreateView, WorkshopUpdateView, WorkshopDeleteView, WorkshopListView
 from qcos.base.views import WorkshopAnnotateView, WorkshopPrintView, WorkshopPrintBatchListView
 from qcos.base.views import WorkshopPrintBatchDownloadView, ParticipantCheckInListView, ParticipantCheckInView
+from qcos.base.views import RegistrationDownloadView
 
 urlpatterns = [
 	path('admin/', admin.site.urls),
@@ -68,6 +69,7 @@ urlpatterns = [
 	path('base/camp/<int:camp_pk>/registrations/<int:registration_pk>/workshops/<int:pk>/delete', WorkshopDeleteView.as_view(), name='delete-workshop'),
 	path('base/camp/<int:camp_pk>/registrations/participants', ParticipantCheckInListView.as_view(), name='list-checkin-participants'),
 	path('base/camp/<int:camp_pk>/registrations/<int:pk>/checkin-participants', ParticipantCheckInView.as_view(), name='checkin-participant'),
+	path('base/camp/<int:camp_pk>/registrations/download', RegistrationDownloadView.as_view(), name='download-registration'),
 	path('base/camp/<int:camp_pk>/workshops', WorkshopListView.as_view(), name='list-workshop'),
 	path('base/camp/<int:camp_pk>/workshops/annotate', WorkshopAnnotateView.as_view(), name='annotate-workshop'),
 	path('base/camp/<int:camp_pk>/workshops/print', WorkshopPrintView.as_view(), name='print-workshop'),

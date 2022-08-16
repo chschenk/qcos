@@ -7,6 +7,9 @@
 		<a href="{% url 'create-registration' camp.pk %}" class="btn btn-default btn-sm btn-favorite" role="button">
 			{% trans "Add registration" %}<span class="fas fa-user-plus"></span>
 		</a>
+		<a href="{% url 'download-registration' camp.pk %}" class="btn btn-default btn-sm" role="button">
+			{% trans "Download registrations" %}<span class="fas fa-download"></span>
+		</a>
 {% endblock %}
 {% block body %}
 {% if object_list %}

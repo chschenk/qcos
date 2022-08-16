@@ -599,3 +599,95 @@ class ParticipantCheckInView(LoginRequiredMixin, CampMixin, RegistrationMixin, U
 
 	def get_success_url(self):
 		return reverse('list-checkin-participants', args=(self.kwargs['camp_pk'],))
+
+class RegistrationDownloadView(LoginRequiredMixin, View):
+
+	def get(self, request, *args, **kwargs):
+		camp = get_object_or_404(Camp, pk=self.kwargs['camp_pk'])
+		workbook = Workbook()
+		sheet = workbook.add_sheet(_("Registrations"))
+		col = 0
+		sheet.write(0, col, _("Diocese"))
+		col += 1
+		sheet.write(0, col, _("District"))
+		col += 1
+		sheet.write(0, col, _("Clan"))
+		col += 1
+		for fee in camp.fee_set.all().order_by('pk'):
+			sheet.write(0, col, _(fee.name))
+			col += 1
+		sheet.write(0, col, _("Participants"))
+		col += 1
+		sheet.write(0, col, _("Present participants"))
+		col += 1
+		sheet.write(0, col, _("Registered participants"))
+		col += 1
+		sheet.write(0, col, _("Price"))
+		col += 1
+		sheet.write(0, col, _("Paid"))
+		col += 1
+		sheet.write(0, col, _("Rules accepted"))
+		col += 1
+		sheet.write(0, col, _("Picture rights"))
+		col += 1
+		sheet.write(0, col, _("Staff confirmed"))
+		col += 1
+		sheet.write(0, col, _("Comment"))
+		col += 1
+		sheet.write(0, col, _("Contact"))
+		col += 1
+		sheet.write(0, col, _("E-Mail"))
+		col += 1
+		sheet.write(0, col, _("Telephone"))
+
+		row = 1
+		for registration in camp.registration_set.all():
+			col = 0
+			sheet.write(row, col, str(registration.clan.district.diocese))
+			col += 1
+			sheet.write(row, col, str(registration.clan.district))
+			col += 1
+			sheet.write(row, col, str(registration.clan))
+			col += 1
+			for fee in camp.fee_set.all().order_by('pk'):
+				quantity = 0
+				try:
+					info = registration.ticketinfo_set.get(fee=fee)
+					quantity = info.quantity
+				except TicketInfo.DoesNotExist:
+					quantity = 0
+				sheet.write(row, col, int(quantity))
+				col += 1
+			sheet.write(row, col, int(registration.participants()))
+			col += 1
+			sheet.write(row, col, int(registration.present_participants))
+			col += 1
+			sheet.write(row, col, int(registration.registered_participants))
+			col += 1
+			sheet.write(row, col, float(registration.get_price()))
+			col += 1
+			sheet.write(row, col, float(registration.paid))
+			col += 1
+			answer = "X" if registration.rules_accepted else ""
+			sheet.write(row, col, answer)
+			col += 1
+			answer = "X" if registration.picture_rights else ""
+			sheet.write(row, col, answer)
+			col += 1
+			answer = "X" if registration.staff_confirmed else ""
+			sheet.write(row, col, answer)
+			col += 1
+			sheet.write(row, col, str(registration.comment))
+			col += 1
+			sheet.write(row, col, str(registration.contact_name))
+			col += 1
+			sheet.write(row, col, str(registration.email))
+			col += 1
+			sheet.write(row, col, str(registration.telephone))
+			col += 1
+			row += 1
+		filename="Registrations-{}.xls".format(camp.name)
+		response = HttpResponse(content_type='application/ms-excel')
+		workbook.save(response)
+		response['Content-Disposition'] = 'attachment; filename={}'.format(filename)
+		return response
