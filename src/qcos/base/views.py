@@ -364,7 +364,7 @@ class RegistrationCreateView(LoginRequiredMixin, View):
 						continue
 					ticket_info.registration = registration
 					ticket_info.save()
-				return HttpResponseRedirect(reverse('list-registration', args=(kwargs['camp_pk'],)))
+				return HttpResponseRedirect(reverse('detail-registration', args=(kwargs['camp_pk'], registration.pk)))
 		return self.get(request, *args, **kwargs)
 
 
