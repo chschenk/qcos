@@ -5,7 +5,8 @@
 #, fuzzy
 msgid ""
 msgstr ""
-"POT-Creation-Date: 2022-08-16 19:18+0200\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-08-17 10:25+0200\n"
 "Language: German\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -43,7 +44,7 @@ msgstr "Mitglieder dieses Organisators:"
 #: qcos/base/templates/base/camp_detail.html:44
 #: qcos/base/templates/base/checkin_step3.html:14
 #: qcos/base/templates/base/registration_detail.html:111
-#: qcos/base/templates/base/workshop_list.html:20 qcos/base/views.py:569
+#: qcos/base/templates/base/workshop_list.html:20 qcos/base/views.py:571
 msgid "Name"
 msgstr "Name"
 
@@ -206,7 +207,7 @@ msgstr "Benutzername"
 #: qcos/base/templates/auth/user_detail.html:24
 #: qcos/base/templates/auth/user_profile.html:27
 #: qcos/base/templates/base/checkin_step1.html:29
-#: qcos/base/templates/base/registration_detail.html:42 qcos/base/views.py:639
+#: qcos/base/templates/base/registration_detail.html:42 qcos/base/views.py:645
 msgid "E-Mail"
 msgstr "E-Mail"
 
@@ -286,11 +287,11 @@ msgstr "Preisstufen"
 
 #: qcos/base/templates/base/camp_detail.html:45
 #: qcos/base/templates/base/registration_detail.html:86
-#: qcos/base/templates/base/registration_list.html:26 qcos/base/views.py:625
+#: qcos/base/templates/base/registration_list.html:26 qcos/base/views.py:631
 msgid "Price"
 msgstr "Preis"
 
-#: qcos/base/templates/base/camp_detail.html:48 qcos/base/views.py:608
+#: qcos/base/templates/base/camp_detail.html:48 qcos/base/views.py:614
 #: templates/base.html:86
 msgid "Registrations"
 msgstr "Anmeldungen"
@@ -351,8 +352,8 @@ msgstr "Anmeldungsübersicht"
 #: qcos/base/templates/base/participant_checkin_list.html:13
 #: qcos/base/templates/base/registration_detail.html:34
 #: qcos/base/templates/base/registration_list.html:19
-#: qcos/base/templates/base/workshop_list.html:19 qcos/base/views.py:568
-#: qcos/base/views.py:614
+#: qcos/base/templates/base/workshop_list.html:19 qcos/base/views.py:570
+#: qcos/base/views.py:620
 msgid "Clan"
 msgstr "Stamm"
 
@@ -362,13 +363,13 @@ msgid "Contact name"
 msgstr "Kontakt Name"
 
 #: qcos/base/templates/base/checkin_step1.html:33
-#: qcos/base/templates/base/registration_detail.html:46 qcos/base/views.py:641
+#: qcos/base/templates/base/registration_detail.html:46 qcos/base/views.py:647
 msgid "Telephone"
 msgstr "Telefon"
 
 #: qcos/base/templates/base/checkin_step1.html:37
 #: qcos/base/templates/base/registration_detail.html:50
-#: qcos/base/templates/base/registration_list.html:32 qcos/base/views.py:635
+#: qcos/base/templates/base/registration_list.html:32 qcos/base/views.py:641
 msgid "Comment"
 msgstr "Bemerkung"
 
@@ -383,7 +384,6 @@ msgstr "Gesamt"
 
 #: qcos/base/templates/base/checkin_step1.html:59
 #: qcos/base/templates/base/checkin_step2.html:10
-#: qcos/base/templates/base/workshop_form.html:10
 msgid "Check in"
 msgstr "Check-in"
 
@@ -395,7 +395,7 @@ msgstr "Weiter"
 
 #: qcos/base/templates/base/checkin_step3.html:10
 #: qcos/base/templates/base/workshopprintbatch_list.html:12
-#: qcos/base/views.py:565 templates/base.html:92
+#: qcos/base/views.py:567 templates/base.html:92
 msgid "Workshops"
 msgstr "Workshops"
 
@@ -435,8 +435,8 @@ msgstr "Diözese löschen"
 #: qcos/base/templates/base/diocese_detail.html:5
 #: qcos/base/templates/base/diocese_list.html:16
 #: qcos/base/templates/base/participant_checkin_list.html:11
-#: qcos/base/templates/base/registration_detail.html:26 qcos/base/views.py:566
-#: qcos/base/views.py:610
+#: qcos/base/templates/base/registration_detail.html:26 qcos/base/views.py:568
+#: qcos/base/views.py:616
 msgid "Diocese"
 msgstr "Diözese"
 
@@ -447,8 +447,8 @@ msgstr "Bezirk hinzufügen"
 #: qcos/base/templates/base/diocese_detail.html:17
 #: qcos/base/templates/base/district_confirm_delete.html:5
 #: qcos/base/templates/base/participant_checkin_list.html:12
-#: qcos/base/templates/base/registration_detail.html:30 qcos/base/views.py:567
-#: qcos/base/views.py:612
+#: qcos/base/templates/base/registration_detail.html:30 qcos/base/views.py:569
+#: qcos/base/views.py:618
 msgid "District"
 msgstr "Bezirk"
 
@@ -532,7 +532,7 @@ msgid "Check-in participants for "
 msgstr "Teilnehmer Checkin für"
 
 #: qcos/base/templates/base/participant_checkin_list.html:14
-#: qcos/base/templates/base/registration_list.html:31 qcos/base/views.py:637
+#: qcos/base/templates/base/registration_list.html:31 qcos/base/views.py:643
 msgid "Contact"
 msgstr "Kontakt"
 
@@ -551,6 +551,7 @@ msgid "Registration from %(object.clan)s for %(camp)s"
 msgstr "Anmeldung von %(object.clan)s für %(camp)s"
 
 #: qcos/base/templates/base/registration_detail.html:11
+#: qcos/base/templates/base/workshop_form.html:10
 msgid "Add workshop"
 msgstr "Workshop hinzufügen"
 
@@ -569,12 +570,12 @@ msgid "Registered"
 msgstr "Angemeldet"
 
 #: qcos/base/templates/base/registration_detail.html:90
-#: qcos/base/templates/base/registration_list.html:27 qcos/base/views.py:627
+#: qcos/base/templates/base/registration_list.html:27 qcos/base/views.py:633
 msgid "Paid"
 msgstr "Bezahlt"
 
 #: qcos/base/templates/base/registration_detail.html:94
-#: qcos/base/templates/base/registration_list.html:28 qcos/base/views.py:629
+#: qcos/base/templates/base/registration_list.html:28 qcos/base/views.py:635
 msgid "Rules accepted"
 msgstr "Regeln akzeptiert"
 
@@ -601,12 +602,12 @@ msgid "No"
 msgstr "Nein"
 
 #: qcos/base/templates/base/registration_detail.html:98
-#: qcos/base/templates/base/registration_list.html:29 qcos/base/views.py:631
+#: qcos/base/templates/base/registration_list.html:29 qcos/base/views.py:637
 msgid "Picture rights"
 msgstr "Bildrechte"
 
 #: qcos/base/templates/base/registration_detail.html:102
-#: qcos/base/templates/base/registration_list.html:30 qcos/base/views.py:633
+#: qcos/base/templates/base/registration_list.html:30 qcos/base/views.py:639
 msgid "Staff confirmed"
 msgstr "Bestätigung Personal"
 
@@ -692,35 +693,35 @@ msgstr "Download"
 msgid "There are no print batches for this camp"
 msgstr "Es gibt keine Druckaufträge für dieses Camp"
 
-#: qcos/base/views.py:23 qcos/base/views.py:63 qcos/base/views.py:111
-#: qcos/base/views.py:162 qcos/base/views.py:210 qcos/base/views.py:248
-#: qcos/base/views.py:300 qcos/base/views.py:468
+#: qcos/base/views.py:24 qcos/base/views.py:64 qcos/base/views.py:112
+#: qcos/base/views.py:163 qcos/base/views.py:211 qcos/base/views.py:249
+#: qcos/base/views.py:301 qcos/base/views.py:469
 msgid "Create"
 msgstr "Hinzufügen"
 
-#: qcos/base/views.py:40 qcos/base/views.py:86 qcos/base/views.py:134
-#: qcos/base/views.py:175 qcos/base/views.py:222 qcos/base/views.py:278
-#: qcos/base/views.py:324 qcos/base/views.py:385 qcos/base/views.py:485
+#: qcos/base/views.py:41 qcos/base/views.py:87 qcos/base/views.py:135
+#: qcos/base/views.py:176 qcos/base/views.py:223 qcos/base/views.py:279
+#: qcos/base/views.py:325 qcos/base/views.py:386 qcos/base/views.py:486
 msgid "Update"
 msgstr "Bearbeiten"
 
-#: qcos/base/views.py:342
+#: qcos/base/views.py:343
 msgid "New"
 msgstr "Neu"
 
-#: qcos/base/views.py:570
+#: qcos/base/views.py:572
 msgid "Workshop ID"
 msgstr "Nummer"
 
-#: qcos/base/views.py:619
+#: qcos/base/views.py:625
 msgid "Participants"
 msgstr "Teilnehmende"
 
-#: qcos/base/views.py:621
+#: qcos/base/views.py:627
 msgid "Present participants"
 msgstr "Anwesende Teilnehmende"
 
-#: qcos/base/views.py:623
+#: qcos/base/views.py:629
 msgid "Registered participants"
 msgstr "Angemeldete Teilnehmende"
 
