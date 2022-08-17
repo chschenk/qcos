@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-08-17 10:25+0200\n"
+"POT-Creation-Date: 2022-08-17 10:35+0200\n"
 "Language: German\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -43,7 +43,7 @@ msgstr "Mitglieder dieses Organisators:"
 #: qcos/base/templates/base/camp_detail.html:18
 #: qcos/base/templates/base/camp_detail.html:44
 #: qcos/base/templates/base/checkin_step3.html:14
-#: qcos/base/templates/base/registration_detail.html:111
+#: qcos/base/templates/base/registration_detail.html:112
 #: qcos/base/templates/base/workshop_list.html:20 qcos/base/views.py:571
 msgid "Name"
 msgstr "Name"
@@ -92,7 +92,7 @@ msgstr "Enddatum"
 #: qcos/base/templates/base/camp_detail.html:34
 #: qcos/base/templates/base/camp_list.html:20
 #: qcos/base/templates/base/checkin_step3.html:15
-#: qcos/base/templates/base/registration_detail.html:112
+#: qcos/base/templates/base/registration_detail.html:113
 #: qcos/base/templates/base/workshop_list.html:21
 msgid "Description"
 msgstr "Beschreibung"
@@ -159,8 +159,8 @@ msgstr "Anzeigen"
 #: qcos/base/templates/base/diocese_list.html:27
 #: qcos/base/templates/base/district_detail.html:17
 #: qcos/base/templates/base/district_detail.html:25
-#: qcos/base/templates/base/registration_detail.html:116
-#: qcos/base/templates/base/registration_detail.html:128
+#: qcos/base/templates/base/registration_detail.html:117
+#: qcos/base/templates/base/registration_detail.html:129
 #: qcos/base/templates/base/registration_list.html:34
 #: qcos/base/templates/base/registration_list.html:56
 #: qcos/base/templates/base/workshop_list.html:25
@@ -176,7 +176,7 @@ msgstr "Bearbeiten"
 #: qcos/base/templates/base/diocese_detail.html:20
 #: qcos/base/templates/base/diocese_list.html:19
 #: qcos/base/templates/base/district_detail.html:18
-#: qcos/base/templates/base/registration_detail.html:117
+#: qcos/base/templates/base/registration_detail.html:118
 #: qcos/base/templates/base/registration_list.html:35
 #: qcos/base/templates/base/workshop_list.html:26
 #: qcos/base/templates/base/workshopprintbatch_list.html:14
@@ -400,19 +400,19 @@ msgid "Workshops"
 msgstr "Workshops"
 
 #: qcos/base/templates/base/checkin_step3.html:16
-#: qcos/base/templates/base/registration_detail.html:113
+#: qcos/base/templates/base/registration_detail.html:114
 #: qcos/base/templates/base/workshop_list.html:22
 msgid "Status"
 msgstr "Status"
 
 #: qcos/base/templates/base/checkin_step3.html:17
-#: qcos/base/templates/base/registration_detail.html:114
+#: qcos/base/templates/base/registration_detail.html:115
 #: qcos/base/templates/base/workshop_list.html:23
 msgid "Number"
 msgstr "Nummer"
 
 #: qcos/base/templates/base/checkin_step3.html:18
-#: qcos/base/templates/base/registration_detail.html:115
+#: qcos/base/templates/base/registration_detail.html:116
 #: qcos/base/templates/base/workshop_list.html:24
 msgid "Printed"
 msgstr "Gedruckt"
@@ -582,7 +582,7 @@ msgstr "Regeln akzeptiert"
 #: qcos/base/templates/base/registration_detail.html:95
 #: qcos/base/templates/base/registration_detail.html:99
 #: qcos/base/templates/base/registration_detail.html:103
-#: qcos/base/templates/base/registration_detail.html:127
+#: qcos/base/templates/base/registration_detail.html:128
 #: qcos/base/templates/base/registration_list.html:50
 #: qcos/base/templates/base/registration_list.html:51
 #: qcos/base/templates/base/registration_list.html:52
@@ -593,7 +593,7 @@ msgstr "Ja"
 #: qcos/base/templates/base/registration_detail.html:95
 #: qcos/base/templates/base/registration_detail.html:99
 #: qcos/base/templates/base/registration_detail.html:103
-#: qcos/base/templates/base/registration_detail.html:127
+#: qcos/base/templates/base/registration_detail.html:128
 #: qcos/base/templates/base/registration_list.html:50
 #: qcos/base/templates/base/registration_list.html:51
 #: qcos/base/templates/base/registration_list.html:52
@@ -615,10 +615,15 @@ msgstr "Bestätigung Personal"
 msgid "Workshop overview"
 msgstr "Workshopübersicht"
 
-#: qcos/base/templates/base/registration_detail.html:126
+#: qcos/base/templates/base/registration_detail.html:127
 #: qcos/base/templates/base/workshop_list.html:36
 msgid "Not yet annotated"
 msgstr "Noch nicht nummeriert"
+
+#: qcos/base/templates/base/registration_detail.html:138
+#, fuzzy
+msgid "This registration has no Workshops"
+msgstr "Diese Anmeldungen hat keine Workshops"
 
 #: qcos/base/templates/base/registration_form.html:6
 #: qcos/base/templates/base/registration_form.html:7

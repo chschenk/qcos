@@ -104,33 +104,37 @@
 				</tr>
 			</tbody>
 		</table>
-		<h2>{% trans "Workshop overview" %}</h2>
-		<table class="table table-striped">
-			<thead>
-				<tr>
-					<th scope="col">{% trans "Name" %}</th>
-					<th scope="col">{% trans "Description" %}</th>
-					<th scope="col">{% trans "Status" %}</th>
-					<th scope="col">{% trans "Number" %}</th>
-					<th scope="col">{% trans "Printed" %}</th>
-					<th scope="col">{% trans "Edit" %}</th>
-					<th scope="col">{% trans "Delete" %}</th>
-				</tr>
-			</thead>
-			<tbody>
-				{% for workshop in registration.workshop_set.all %}
+	<h2>{% trans "Workshop overview" %}</h2>
+		{% if registration.workshop_set.all %}
+			<table class="table table-striped">
+				<thead>
 					<tr>
-						<th scope="row">{{ workshop.name }}</th>
-						<td>{{ workshop.description }}</td>
-						<td>{{ workshop.get_status_display }}</td>
-						<td>{% if workshop.annotated_id %}{{ workshop.annotated_id }}{% else %}{% trans "Not yet annotated" %}{% endif %}</td>
-						<td>{% if workshop.printed %}{% trans "Yes" %}{% else %}{% trans "No" %}{% endif %}</td>
-						<td><a href="{% url 'update-workshop' camp.pk registration.pk workshop.pk %}" class="btn btn-primary btn-sm" role="button">{% trans "Edit" %}</a></td>
-						<td><a href="{% url 'delete-workshop' camp.pk registration.pk workshop.pk %}" class="btn btn-default btn-sm" role="button">
-							<span class="fas fa-trash"></span>
-							</a></td>
+						<th scope="col">{% trans "Name" %}</th>
+						<th scope="col">{% trans "Description" %}</th>
+						<th scope="col">{% trans "Status" %}</th>
+						<th scope="col">{% trans "Number" %}</th>
+						<th scope="col">{% trans "Printed" %}</th>
+						<th scope="col">{% trans "Edit" %}</th>
+						<th scope="col">{% trans "Delete" %}</th>
 					</tr>
-				{% endfor %}
-			</tbody>
-		</table>
+				</thead>
+				<tbody>
+					{% for workshop in registration.workshop_set.all %}
+						<tr>
+							<th scope="row">{{ workshop.name }}</th>
+							<td>{{ workshop.description }}</td>
+							<td>{{ workshop.get_status_display }}</td>
+							<td>{% if workshop.annotated_id %}{{ workshop.annotated_id }}{% else %}{% trans "Not yet annotated" %}{% endif %}</td>
+							<td>{% if workshop.printed %}{% trans "Yes" %}{% else %}{% trans "No" %}{% endif %}</td>
+							<td><a href="{% url 'update-workshop' camp.pk registration.pk workshop.pk %}" class="btn btn-primary btn-sm" role="button">{% trans "Edit" %}</a></td>
+							<td><a href="{% url 'delete-workshop' camp.pk registration.pk workshop.pk %}" class="btn btn-default btn-sm" role="button">
+								<span class="fas fa-trash"></span>
+								</a></td>
+						</tr>
+					{% endfor %}
+				</tbody>
+			</table>
+		{% else %}
+			<h4>{% trans "This registration has no Workshops" %}</h4>
+		{% endif %}
 {% endblock %}
