@@ -5,7 +5,7 @@ WORKDIR /app
 COPY ./src/ /app/
 COPY docker-entrypoint.sh /docker-entrypoint.sh
 RUN apt-get update
-RUN apt-get install gettext
+RUN apt-get install gettext -y
 RUN pip install --upgrade pip
 RUN pip install -r /app/requirements.txt
 RUN pip install gunicorn
