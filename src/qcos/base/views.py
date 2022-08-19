@@ -461,13 +461,15 @@ class RegestrationCheckinStep3View(LoginRequiredMixin, CampMixin, RegistrationMi
 	template_name = "base/checkin_step3.html"
 
 
-class WorkshopCreateView(LoginRequiredMixin, CampMixin, RegistrationMixin, CreateView):
+class WorkshopCreateView(LoginRequiredMixin, CampMixin, CreateView):
 	model = Workshop
 	fields = ('name', 'description', 'status')
 
 	def get_context_data(self, **kwargs):
 		ctx = super(WorkshopCreateView, self).get_context_data(**kwargs)
 		ctx['mode'] = _('Create')
+		ctx['registration'] = Registration.objects.get(pk=self.kwargs['pk'])
+		ctx['clan'] = ctx['registration'].clan
 		return ctx
 
 	def form_valid(self, form):
@@ -478,21 +480,29 @@ class WorkshopCreateView(LoginRequiredMixin, CampMixin, RegistrationMixin, Creat
 		return reverse('detail-registration', args=(self.kwargs['camp_pk'], self.kwargs['pk']))
 
 
-class WorkshopUpdateView(LoginRequiredMixin, CampMixin, RegistrationMixin, UpdateView):
+class WorkshopUpdateView(LoginRequiredMixin, CampMixin, UpdateView):
 	model = Workshop
 	fields = ('name', 'description', 'status')
 
 	def get_context_data(self, **kwargs):
 		ctx = super(WorkshopUpdateView, self).get_context_data(**kwargs)
 		ctx['mode'] = _('Update')
+		ctx['registration'] = Registration.objects.get(pk=self.kwargs['registration_pk'])
+		ctx['clan'] = ctx['registration'].clan
 		return ctx
 
 	def get_success_url(self):
 		return reverse('detail-registration', args=(self.kwargs['camp_pk'], self.kwargs['registration_pk']))
 
 
-class WorkshopDeleteView(LoginRequiredMixin, CampMixin, RegistrationMixin, DeleteView):
+class WorkshopDeleteView(LoginRequiredMixin, CampMixin, DeleteView):
 	model = Workshop
+
+	def get_context_data(self, **kwargs):
+		ctx = super(WorkshopDeleteView, self).get_context_data(**kwargs)
+		ctx['registration'] = Registration.objects.get(pk=self.kwargs['registration_pk'])
+		ctx['clan'] = ctx['registration'].clan
+		return ctx
 
 	def get_success_url(self):
 		return reverse('detail-registration', args=(self.kwargs['camp_pk'], self.kwargs['registration_pk']))
