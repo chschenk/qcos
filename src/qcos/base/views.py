@@ -8,6 +8,7 @@ from django.contrib.auth.models import User, Group
 from django.db.models import Max
 from django.http import HttpResponse
 from xlsxwriter import Workbook
+from xlsxwriter.utility import xl_rowcol_to_cell
 from qcos.base.models import Diocese, District, Clan, Camp, Fee, Registration, TicketInfo, Workshop, WorkshopPrintBatch
 from qcos.base.forms import SignUpForm, OrganizerForm, TicketInfoForm, RegistrationForm, CheckInFormStep1
 from qcos.base.forms import CheckInFormStep2, WorkshopAnnotateForm, WorkshopPrintForm
@@ -655,6 +656,8 @@ class RegistrationDownloadView(LoginRequiredMixin, View):
 			col += 1
 			sheet.write(row, col, str(registration.clan))
 			col += 1
+			cells = list()
+			price_terms = list()
 			for fee in camp.fee_set.all().order_by('pk'):
 				quantity = 0
 				try:
@@ -663,14 +666,20 @@ class RegistrationDownloadView(LoginRequiredMixin, View):
 				except TicketInfo.DoesNotExist:
 					quantity = 0
 				sheet.write(row, col, int(quantity))
+				cell = xl_rowcol_to_cell(row, col)
+				cells.append(cell)
+				price_terms.append("{}*{}".format(cell, str(fee.price)))
+
 				col += 1
-			sheet.write(row, col, int(registration.participants()))
+			formula = "={}".format("+".join(cells))
+			sheet.write_formula(row, col, formula)
 			col += 1
 			sheet.write(row, col, int(registration.present_participants))
 			col += 1
 			sheet.write(row, col, int(registration.registered_participants))
 			col += 1
-			sheet.write(row, col, float(registration.get_price()))
+			formula = "={}".format("+".join(price_terms))
+			sheet.write_formula(row, col, formula)
 			col += 1
 			sheet.write(row, col, float(registration.paid))
 			col += 1
